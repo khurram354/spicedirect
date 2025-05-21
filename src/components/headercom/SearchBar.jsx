@@ -57,7 +57,7 @@ const SearchBar = ({ closeDropDownHandler }) => {
                 </p>
                 <Link href={'https://wa.me/00447751980423'} className='flex bg-red-500 justify-center p-2 shadow-md'>
                   <span className='pr-2'><FaWhatsappSquare className='text-warningcolor text-xl' /></span>
-                  <span className='text-white cursor-pointer sm:text-sm lg:text-base'>0044-7751980423</span>
+                  <span className='text-white cursor-pointer sm:text-sm lg:text-base'>07751980423</span>
                 </Link>
               </div>
             </div>
