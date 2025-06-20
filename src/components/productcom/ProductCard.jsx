@@ -108,10 +108,10 @@ const ProductCard = ({ type, allcategories }) => {
                 </div>
                 <p className="text-sm px-2 text-gray-600 leading-4 font-semibold">{product.name}</p>
                 <div className='py-2'>
-                  <div className='pl-2 text-sm flex'>
+                  {/* <div className='pl-2 text-sm flex'>
                     <p className='text-xs font-medium text-secondary'>Pack Size:&nbsp;&nbsp;</p>
                     <p className='text-xs font-medium text-secondary'>{product.weight_kg}kg</p>
-                  </div>
+                  </div> */}
                   {/* <div className='pr-4 text-sm'>
                     <p className='text-dangercolor font-semibold'><span>&pound;</span>{product.default_sale_price}</p>
                     <p className='text-secondary font-semibold text-xs'>inc VAT <span>&pound;</span>{product.vat.rate > 0 ? Math.round(product.vat.rate / 100 * product.default_sale_price + product.default_sale_price) : product.default_sale_price}</p>
