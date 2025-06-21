@@ -37,7 +37,7 @@ const deletehomeslider = async (id) => {return await fetchData(`${frontEndURL}/a
 const getallsupplierimages = async() => {return await fetchData(`${frontEndURL}/api/get_all_supplier_images`)} 
 const deletesupplierslider = async (id) => {return await fetchData(`${frontEndURL}/api/delete_supplier_slider/${id}`,{method:'DELETE'});}
 const getallterms = async() => {return await fetchData(`${frontEndURL}/api/get_terms_conditions`);}
-const getallproducts = async (rbody) => {return await fetchData(`${frontEndURL}/api/get_allproducts`,'POST', rbody)};
+const getallproducts = async (rbody) => {return await fetchData(`/api/get_allproducts`,'POST', rbody)};
 const createblog = async (rbody) => {return await fetchData(`${frontEndURL}/api/create_new_blog`, 'POST', rbody);}
 const updatecuisine = async (rbody) => {return await fetchData(`${frontEndURL}/api/add_product_cuisine`, 'POST', rbody);}
 const updatespcategory = async (rbody) => {return await fetchData(`${frontEndURL}/api/add_special_categories`,'POST', rbody);}
