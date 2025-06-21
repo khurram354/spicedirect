@@ -31,7 +31,7 @@ const gethomebanners = async () => {const resp = await fetchData(`${frontEndURL}
 const getallcuisines = async () => {const resp = await fetchData(`${backEndURL}/api/get_all_cuisines`); return resp?.cuisines}
 const getallhomeblog = async () => {const resp = await fetchData(`${backEndURL}/api/get_all_blogs`); return resp?.blogs}
 const getsingleblog = async (id) => {const resp = await fetchData(`${backEndURL}/api/get_blog_byid/${id}`); return resp?.blog;}
-const logoutuser = async () => {return await fetchData(`${frontEndURL}/api/logout`);}
+const logoutuser = async () => {return await fetchData(`/api/logout`);}
 const getallhomeslider = async() => {return await fetchData(`${frontEndURL}/api/get_all_homeslider_images`)}
 const deletehomeslider = async (id) => {return await fetchData(`${frontEndURL}/api/delete_homeslider/${id}`,{method:'DELETE'});}
 const getallsupplierimages = async() => {return await fetchData(`${frontEndURL}/api/get_all_supplier_images`)} 
@@ -45,8 +45,8 @@ const sendemail = async (rbody) => {return await fetchData(`/api/send_email`, 'P
 const addtofavourite = async (rbody) => {return await fetchData(`${frontEndURL}/api/add_favourite`, 'POST', rbody);}
 const uploadproductimages = async (productId,formData) => {return await fetchData(`${frontEndURL}/api/upload_product_image/${productId}`, 'POST', formData);}
 const editbannerimages = async (bannerId,formData) => {return await fetchData(`${frontEndURL}/api/edit_banners_images/${bannerId}`, 'POST', formData);}
-const signupuser = async (rbody) => {return await fetchData(`${frontEndURL}/api/sign_up`, 'POST', rbody);}
-const loginuser = async (rbody) => {return await fetchData(`${frontEndURL}/api/login`, 'POST', rbody);}
+const signupuser = async (rbody) => {return await fetchData(`/api/sign_up`, 'POST', rbody);}
+const loginuser = async (rbody) => {return await fetchData(`/api/login`, 'POST', rbody);}
 const createsubcategory = async (rbody) => {return await fetchData(`${frontEndURL}/api/create_sub_category`, 'POST', rbody);}
 const createsubsubcategory = async (rbody) => {return await fetchData(`${frontEndURL}/api/create_sub_sub_category`, 'POST', rbody);}
 const getallsubcategories = async (rbody = {proId:''}) => {return await fetchData(`${frontEndURL}/api/get_all_sub_categories`,'POST', rbody);}
