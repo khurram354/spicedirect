@@ -92,7 +92,7 @@ const ProductCard = ({ type, allcategories }) => {
               <div className="  w-full overflow-hidden rounded-lg h-56 p-2">
                 <Link href={`#`}>
                   <Image
-                    src={`/productImages/${product.image_name}`}
+                    src={`${process.env.NEXT_PUBLIC_AWS_URL}/${product.image_name}`}
                     width={500}
                     height={500}
                     alt={`Loading...Product Picture`}

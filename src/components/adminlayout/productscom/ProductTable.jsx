@@ -133,7 +133,7 @@ const ProductTable = () => {
                       <div className="flex justify-center items-center space-x-2">
                         <span className="relative w-20 h-20 overflow-hidden">
                           <Image
-                            src={`/productImages/${pro.image_name}`}
+                            src={`${process.env.NEXT_PUBLIC_AWS_URL}/${pro.image_name}`}
                             width={100}
                             height={100}
                             alt="Loading..."
