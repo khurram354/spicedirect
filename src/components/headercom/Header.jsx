@@ -65,11 +65,12 @@ const Header = () => {
         <div className='flex items-center mt-1 pr-4'>
           <span className='w-12 h-12'>
             <Image
-              src={`/logo/spicedirectlognobg.png`}
+              src="/logo/spicedirectlogo.png"
               width={100}
               height={100}
               alt="Spice Direct Logo"
               className='object-cover w-full h-full'
+              priority
             />
           </span>
           <Link href={`/`} className='text-sm text-gray-600 ml-2 border-b-2 border-gray-400'>Spice Direct Wholesale</Link>

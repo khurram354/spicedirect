@@ -45,7 +45,7 @@ const cuisines = await getAllCuisines();
     <ShopByCuisine cuisines = {cuisines}/>
     {/* <Heading heading={'Shop By Sector'}/>
     <HomeBlog blogs = {blogs}/> */}
-     <Heading heading={'Proud Partners'}/>
+     <Heading heading={'Product Partners'}/>
     <OurSupplier suppliers={imagesFiles}/>
     <Footer/>    
     </>    
