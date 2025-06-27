@@ -13,9 +13,6 @@ const SearchBar = ({ closeDropDownHandler }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const handleKeyDown = (e) => {
-    if (router.pathname !== '/product/search') {
-      router.push('/product/search')
-    }
     dispatch(addSearch(searchValue));
   }
 
@@ -37,6 +34,11 @@ const SearchBar = ({ closeDropDownHandler }) => {
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               onKeyUp={handleKeyDown}
+              onFocus={() => {
+                if (window.location.pathname !== '/product/search') {
+                  router.push('/product/search');
+                }
+              }}
               placeholder="Search Product Press Enter"
               className="ring-4 w-full rounded-sm lg:px-10 sm:px-4 sm:text-base lg:py-3 sm:py-2 text-gray-600 focus:outline-dangercolor"
             />
