@@ -33,14 +33,14 @@ const AdminSidebar = () => {
                 <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
                     <ul className="flex flex-col py-4 space-y-1">
                         <li className="px-5 md:block ">
-                            <span>
+                            <Link href={`/`}>
                                 <Image
                                     src="/logo/spicedirect_logo.png"
                                     width={500}
                                     height={500}
                                     alt="Picture of the author"
                                 />
-                            </span>
+                            </Link>
                             <p className="text-sm font-medium tracking-wide text-white text-center uppercase border-b-4 mt-4 pb-3">Admin Panel</p>
                         </li>
                         {

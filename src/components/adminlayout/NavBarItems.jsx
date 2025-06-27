@@ -8,12 +8,12 @@ export const NavBarItems = [
 	{
         id: "1",
 		name: "Dashboard",
-		icon: < IoHomeOutline/>,		
+		icon: < IoHomeOutline/>,	
 		subItems: []
 	},
 	{
         id: '2',
-		name: "Create SubCate",
+		name: "Categories",
 		icon: <FaBorderAll />,		
 		subItems: [
             { 
@@ -29,12 +29,12 @@ export const NavBarItems = [
 	},
 	{
         id: '3',
-		name: "Product Categories",
+		name: "Products",
 		icon: <AiOutlineProduct />,		
 		subItems: [
 			{ 
                 id: "100",
-                name: "Add SubCategories", 
+                name: "Edit Products",
                 link: '/admin/allproduct'
             },
 		]
