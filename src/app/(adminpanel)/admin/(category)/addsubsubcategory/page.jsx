@@ -11,13 +11,13 @@ const page = async() => {
     return null;
   }
   async function getAllSubcategories () {
-    const resp = call_api.getallsubcategories();
+    const resp = call_api.get_allsubcategories();
     return resp;
   }
   const allsubcategories = await getAllSubcategories(); 
   return (
     <>
-    <CreateSubSubCategory allsubcategories = {allsubcategories.subcategories}/>
+    <CreateSubSubCategory allsubcategories = {allsubcategories.categories}/>
     </>
   )
 }

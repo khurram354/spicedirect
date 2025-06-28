@@ -67,7 +67,8 @@ const CreateSubSubCategory = ({ allsubcategories }) => {
                                 <select name="" id="categoryname"
                                     className="ml-6 text-gray-600 focus:outline-none text-sm font-medium px-3 cursor-pointer"
                                     onChange={(e) => setSubCategoryId(e.target.value)}>
-                                    <option value='' className="text-sm">Choose Category</option>
+                                    <option value='' className="text-sm">Sub Categories</option>
+                                    
                                     {allsubcategories && allsubcategories.map((cate, index) => (
                                         <option value={cate._id} className="text-sm" key={index}>{cate.name}</option>
                                     ))}
@@ -99,7 +100,7 @@ const CreateSubSubCategory = ({ allsubcategories }) => {
                         </thead>
 
                         {subsubCategories && subsubCategories.map((ele,index)=>(
-                            <tbody key={index}>{console.log(ele)}
+                            <tbody key={index}>
                             <tr className="hover:bg-gray-200 cursor-pointer">
                             <td className="w-28 p-2 text-center text-gray-600 text-sm font-medium">{index+1}</td>
                             <td className="w-48 p-2 text-center text-gray-600 text-sm font-medium">{ele.name}</td>
