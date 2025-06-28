@@ -7,7 +7,7 @@ import call_api from "@/helper/Api";
 
 const page = async() => {
   const fetchAllCategories = async () => {
-    const resp = await call_api.getallmenucategories();
+    const resp = await call_api.getmenucategories();
     return resp;
   };
   const allcategories = await fetchAllCategories();

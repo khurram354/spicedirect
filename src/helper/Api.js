@@ -27,6 +27,7 @@ const fetchData = async (url, method = 'GET', rbody = null) => {
 
 const getallcategories = async () =>{return await fetchData(`${frontEndURL}/api/get_allcategories`);};
 const getallmenucategories = async () => {return await fetchData(`/api/get_all_menu_categories`);};
+const getmenucategories = async () => {return await fetchData(`${frontEndURL}/api/get_all_menu_categories`);};
 const get_allsubcategories = async () => {return await fetchData(`${frontEndURL}/api/getallsubcategories`);};
 const gethomebanners = async () => {const resp = await fetchData(`${frontEndURL}/api/get_all_banners`); return resp?.banners || []}
 const getallcuisines = async () => {const resp = await fetchData(`${backEndURL}/api/get_all_cuisines`); return resp?.cuisines}
@@ -95,5 +96,6 @@ const call_api = {
   upsertterms,
   adddynamicterms,
   get_allsubcategories,
+  getmenucategories,
 };
 export default call_api;

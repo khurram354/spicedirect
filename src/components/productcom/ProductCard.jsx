@@ -78,14 +78,14 @@ const ProductCard = ({ type, allcategories }) => {
   }
   
   return (
-    <section className='md:flex relative'>
+    <section className='md:flex relative w-full'>
       {
         type !== "search" ?
-          <div className='md:w-3/6'>
+          <div className='md:w-3/12'>
             <CategoryMenuBar allcategories = {allcategories.categories}/>
           </div> : ""
       }
-      <div className={`mx-auto mt-8`}>
+      <div className={`mx-auto mt-8 ${type !== "search" ? "md:w-9/12":""}`}>
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-2 xs:gap-y-5">
           {productdata.length > 0 && productdata.map((product, index) => (
             <div key={index} className='border border-1 xs:w-64 xs:mx-auto'>
