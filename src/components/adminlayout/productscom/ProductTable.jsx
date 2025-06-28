@@ -7,6 +7,7 @@ import FavouriteDialogue from "./FavouriteDialogue";
 import SubCategoryDialogue from "./SubCategoryDialogue";
 import SubSubCategoryDialogue from './SubSubCategoryDialogue';
 import Pagination from "@/components/common/Pagination";
+import { FaSearch } from "react-icons/fa";
 import call_api from "@/helper/Api";
 
 const ProductTable = () => {
@@ -72,8 +73,28 @@ const ProductTable = () => {
     })
   }
 
+  useEffect(() => {
+    if (pageno === 1) {
+      setProductdata([]);
+      fetchProducts();
+    } else {
+      setProductdata([]);
+      setPageno(1);
+    }
+  }, [searchText]);
+
+
   return (
     <>
+     <div className='w-3/4 px-4 mx-auto mt-3 relative left-24 top-5'>
+            <input type="text"
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
+                  placeholder="Search Product Press Enter"
+                  className="ring-4 w-full rounded-sm lg:px-10 sm:px-4 sm:text-base lg:py-3 sm:py-2 text-gray-600 focus:outline-dangercolor"
+                />
+                <FaSearch className="absolute lg:top-4 lg:right-32 text-gray-400 text-xl sm:top-5 md:right-20 sm:right-10" />
+        </div>
       <div className="w-3/4 px-4 mx-auto mt-6 relative left-24 top-5">
         <div className="overflow-hidden rounded-lg shadow-xs">
           <div className="w-full overflow-x-auto">
@@ -106,8 +127,6 @@ const ProductTable = () => {
                         <TbEdit className='w-5 h-5 text-secondary cursor-pointer' onClick={(e) => AddToSubCategoryHandler(pro._id)} />
                       </div>
                     </td>
-
-
                     <td className="px-1 py-3 text-sm w-28 relative">{pro.subsubcategory?.name}
                       <div className="absolute right-20 top-10">
                         {
