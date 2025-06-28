@@ -30,7 +30,6 @@ const ExtractSubCategories = ({ allcategories }) => {
     }
 
     useEffect(()=> {if(cateId){setCateid(cateId)}; if(subcateId){setSubcateid(subcateId)}},[cateId,subcateId]) ;
-    console.log(cateid, subcateid)
     return (
         <div className='mt-4'>{
             allcategories && allcategories.length > 0 && allcategories.map((cate, index) => (
@@ -52,7 +51,6 @@ const ExtractSubCategories = ({ allcategories }) => {
                         >{cate.name}</label>
                     </div>
 
-
                     {
                         cate.subcategories && cate.subcategories.length > 0 && cate._id === cateid && cate.subcategories.map((subcate, index) => (
                             <div key={index}>
@@ -72,13 +70,9 @@ const ExtractSubCategories = ({ allcategories }) => {
                                     >{subcate.name}</label>
                                 </div>
 
-                                {console.log(subcate._id === subcateid)}
-
                                 {
                                     subcate.subsubcategories && subcate.subsubcategories.length > 0 && subcate._id === subcateid && subcate.subsubcategories.map((subsubcate, index) => (
                                         <div key={index}>
-
-
                                             <div className="flex pl-8 items-center">
                                                 <span>
                                                     <input type="checkbox"
@@ -93,13 +87,10 @@ const ExtractSubCategories = ({ allcategories }) => {
                                                     className="text-xs px-2"
                                                 >{subsubcate.name}</label>
                                             </div>
-
-
                                         </div>
                                     ))
                                 }
                             </div>
-
                         ))
                     }
                 </div>

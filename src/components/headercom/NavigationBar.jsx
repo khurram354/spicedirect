@@ -51,7 +51,7 @@ const NavigationBar = ({ hamBurgerHandler, openDropDownHandler, closeDropDownHan
                           <div onClick={(e) => catProHandler(cate._id)} className='cursor-pointer hover:text-secondary hover:font-medium'>
                             <span>{cate.name}</span>
                           </div>
-                          <span className="cursor-pointer" onClick={(e) => cateHandler(cate._id)}><FaAngleRight /></span>
+                          <span className="cursor-pointer hover:text-green-600" onClick={(e) => cateHandler(cate._id)}><FaAngleRight /></span>
                         </div>
                       ))}
                     </div>
@@ -65,7 +65,7 @@ const NavigationBar = ({ hamBurgerHandler, openDropDownHandler, closeDropDownHan
                               <div key={subIndex} className="border-b-2 w-[250px] leading-7 flex justify-between items-center px-2 h-8">
                                 <div onClick={(e) => subcatProHandler(subcate._id)} className="hover:text-secondary cursor-pointer hover:font-medium"><span>{subcate.name}</span></div>
 
-                                <span className="cursor-pointer" onClick={(e) => subCateHandler(subcate._id)}><FaAngleRight /></span>
+                                <span className="cursor-pointer hover:text-green-600" onClick={(e) => subCateHandler(subcate._id)}><FaAngleRight /></span>
                               </div>
                             ))}
                           </div>

@@ -12,7 +12,7 @@ const CategoryMenuBar = ({allcategories}) => {
                 { id: 3, name: "Feature", subItem: <FeatureCategories /> },
                 { id: 4, name: "Size", subItem: [] },
         ]
-        const [openid, setOpenid] = useState([]);
+        const [openid, setOpenid] = useState([1]);
         const submenuHandler = (id) => {
                 setOpenid((prevId)=>{
                         if(prevId.includes(id)){
