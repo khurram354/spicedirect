@@ -11,7 +11,7 @@ const AddNewSupplier = () => {
     const [msg, setMsg] = useState("");
 
     async function getallsupplier() {
-        const result = await call_api.getallsupplierimages();
+        const result = await call_api.getall_adminsupplierimages();
         if (result.success) {
             setCheckslider(false);
             setSlidersupplier(result.suppliers);

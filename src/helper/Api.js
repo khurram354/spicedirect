@@ -37,6 +37,7 @@ const logoutuser = async () => {return await fetchData(`/api/logout`);}
 const getallhomeslider = async() => {return await fetchData(`${frontEndURL}/api/get_all_homeslider_images`)}
 const deletehomeslider = async (id) => {return await fetchData(`${frontEndURL}/api/delete_homeslider/${id}`,{method:'DELETE'});}
 const getallsupplierimages = async() => {return await fetchData(`${frontEndURL}/api/get_all_supplier_images`)} 
+const getall_adminsupplierimages = async() => {return await fetchData(`/api/get_all_supplier_images`)} 
 const deletesupplierslider = async (id) => {return await fetchData(`${frontEndURL}/api/delete_supplier_slider/${id}`,{method:'DELETE'});}
 const getallterms = async() => {return await fetchData(`${frontEndURL}/api/get_terms_conditions`);}
 const getallproducts = async (rbody) => {return await fetchData(`/api/get_allproducts`,'POST', rbody)};
@@ -97,5 +98,6 @@ const call_api = {
   adddynamicterms,
   get_allsubcategories,
   getmenucategories,
+  getall_adminsupplierimages,
 };
 export default call_api;
