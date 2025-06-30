@@ -86,15 +86,15 @@ const ProductTable = () => {
 
   return (
     <>
-     <div className='w-3/4 px-4 mx-auto mt-3 relative left-24 top-5'>
-            <input type="text"
-                  value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)}
-                  placeholder="Search Product Press Enter"
-                  className="ring-4 w-full rounded-sm lg:px-10 sm:px-4 sm:text-base lg:py-3 sm:py-2 text-gray-600 focus:outline-dangercolor"
-                />
-                <FaSearch className="absolute lg:top-4 lg:right-32 text-gray-400 text-xl sm:top-5 md:right-20 sm:right-10" />
-        </div>
+      <div className='w-3/4 px-4 mx-auto mt-3 relative left-24 top-5'>
+        <input type="text"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          placeholder="Enter Product Name"
+          className="ring-4 w-full rounded-sm lg:px-10 sm:px-4 sm:text-base lg:py-3 sm:py-2 text-gray-600 focus:outline-dangercolor"
+        />
+        <FaSearch className="absolute lg:top-4 lg:right-32 text-gray-400 text-xl sm:top-5 md:right-20 sm:right-10" />
+      </div>
       <div className="w-3/4 px-4 mx-auto mt-6 relative left-24 top-5">
         <div className="overflow-hidden rounded-lg shadow-xs">
           <div className="w-full overflow-x-auto">
