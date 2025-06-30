@@ -104,7 +104,7 @@ const CreateSubSubCategory = ({ allsubcategories }) => {
                             <tr className="hover:bg-gray-200 cursor-pointer">
                             <td className="w-28 p-2 text-center text-gray-600 text-sm font-medium">{index+1}</td>
                             <td className="w-48 p-2 text-center text-gray-600 text-sm font-medium">{ele.name}</td>
-                            <td className="w-32 p-2 text-center text-gray-600 text-sm font-medium">{ele.subCategoryId.name}</td>
+                            <td className="w-32 p-2 text-center text-gray-600 text-sm font-medium">{ele.subCategoryId?.name || "not found"}</td>
                             
                         </tr>
                         </tbody>
