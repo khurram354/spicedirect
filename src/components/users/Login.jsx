@@ -46,8 +46,9 @@ const Login = () => {
         <section className='w-screen h-screen absolute top-0 left-0 z-20 flex justify-center items-center rounded-sm bg-gray-200'>
             <div className='bg-primary shadow-xl w-4/12 h-5/6 p-2 rounded-md '>
                 <div className='border-white border-2 w-full h-full flex flex-col justify-center'>
-                    <h4 className='text-center text-secondary font-bold text-xl'>Spice Direct Wholesale</h4>
-                    <h6 className='text-center my-2 text-lg text-secondary font-semibold underline'>Login Form</h6>
+                    <div className='h-1/4'>
+                    <h4 className='text-center text-secondary font-bold text-2xl'>Spice Direct Wholesale</h4>
+                    <h6 className='text-center my-2 text-lg text-secondary font-semibold underline'>Login Form</h6></div>
                     <div className='px-2 my-4'>
                         <label htmlFor="email" className='text-secondary font-medium'>Email</label>
                         <div>
