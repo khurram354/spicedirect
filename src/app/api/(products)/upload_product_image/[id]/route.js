@@ -2,7 +2,7 @@ import dbConnect from "@/lib/db";
 import InventoryProduct from "@/models/inventorySchema";
 import { handleError } from "@/utils/errorHandler";
 import { handleSuccess } from "@/utils/handleSuccess";
-import { S3Client } from "@aws-sdk/client-s3";
+import { S3Client, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { createPresignedPost } from "@aws-sdk/s3-presigned-post";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -19,6 +19,14 @@ export async function POST(request, {params}) {
         const { id } = await params;
         const product = await InventoryProduct.findById({_id:id});
         if(!product){return handleError(null, "product not found")}
+        if(product.image_name.length > 0){
+            const keyToDelete = product.image_name[0];
+            const deleteexistingImage = new DeleteObjectCommand({
+                Bucket: process.env.AWS_BUCKET,
+                Key: keyToDelete,
+            });
+            await client.send(deleteexistingImage);
+        }
         const formData = await request.formData();
         const file = formData.get('file');        
         if(!file){return handleError(null, "no image found, upload again please")};
