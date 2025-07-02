@@ -15,7 +15,7 @@ const ShopByCuisine = ({ cuisines }) => {
                 href={`/product?cuis_id=${cuisine?.name}`}
                 className="relative"
                 style={{
-                  backgroundImage: `url('/images/cuisine/${cuisine?.image_name[0]}')`,
+                  backgroundImage: `url('${process.env.NEXT_PUBLIC_AWS_URL}/${cuisine?.image_name[0]}')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   // opacity: 0.95,

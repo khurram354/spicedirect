@@ -13,7 +13,7 @@ const HomeBanner = ({ homeBanners }) => {
                     href={`/product?offers=${newArrivals[0]?.name}`}
                     >
                         <Image
-                            src={`/images/banners/${newArrivals[0]?.image_name[0]}`}
+                            src={`${process.env.NEXT_PUBLIC_AWS_URL}/${newArrivals[0]?.image_name[0]}`}
                             width={500}
                             height={500}
                             alt="Upload New Arrivals"
@@ -28,7 +28,7 @@ const HomeBanner = ({ homeBanners }) => {
                                 href={`/product?offers=${banner?.name}`}
                                 >
                                     <Image
-                                        src={`/images/banners/${banner?.image_name[0]}`}
+                                        src={`${process.env.NEXT_PUBLIC_AWS_URL}/${banner?.image_name[0]}`}
                                         width={500}
                                         height={500}
                                         alt="Upload New Arrivals"
