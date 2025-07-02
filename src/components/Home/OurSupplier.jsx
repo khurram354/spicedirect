@@ -9,7 +9,7 @@ const OurSupplier = ({ suppliers }) => {
                             <div className='flex justify-center items-center sm:mx-1 md:mx-10 h-32 w-32 overflow-hidden' key={index}>
                                 <div>
                                     <Image
-                                        src={`/images/supplierslider/${supplier.imageurl}`}
+                                        src={`${process.env.NEXT_PUBLIC_AWS_URL}/${supplier.imageurl}`}
                                         width={250}
                                         height={250}
                                         alt='supplier'

@@ -35,10 +35,10 @@ const getallhomeblog = async () => {const resp = await fetchData(`${backEndURL}/
 const getsingleblog = async (id) => {const resp = await fetchData(`${backEndURL}/api/get_blog_byid/${id}`); return resp?.blog;}
 const logoutuser = async () => {return await fetchData(`/api/logout`);}
 const getallhomeslider = async() => {return await fetchData(`${frontEndURL}/api/get_all_homeslider_images`)}
-const deletehomeslider = async (id) => {return await fetchData(`${frontEndURL}/api/delete_homeslider/${id}`,{method:'DELETE'});}
+const deletehomeslider = async (id) => {return await fetchData(`${frontEndURL}/api/delete_homeslider/${id}`,'DELETE');}
 const getallsupplierimages = async() => {return await fetchData(`${frontEndURL}/api/get_all_supplier_images`)} 
 const getall_adminsupplierimages = async() => {return await fetchData(`/api/get_all_supplier_images`)} 
-const deletesupplierslider = async (id) => {return await fetchData(`${frontEndURL}/api/delete_supplier_slider/${id}`,{method:'DELETE'});}
+const deletesupplierslider = async (id) => {return await fetchData(`/api/delete_supplier_slider/${id}`,'DELETE');}
 const getallterms = async() => {return await fetchData(`${frontEndURL}/api/get_terms_conditions`);}
 const getallproducts = async (rbody) => {return await fetchData(`/api/get_allproducts`,'POST', rbody)};
 const createblog = async (rbody) => {return await fetchData(`${frontEndURL}/api/create_new_blog`, 'POST', rbody);}
@@ -57,7 +57,7 @@ const getallsubsubcategories = async(rbody = {proId:''}) => {return await fetchD
 const addsubcategory = async (rbody) => {return await fetchData(`/api/add_sub_category`, 'POST', rbody);}
 const addsubsubcategory = async (rbody) => {return await fetchData(`/api/add_sub_sub_category`, 'POST', rbody);}
 const addhomeslider = async (formData) => {return await fetchData(`${frontEndURL}/api/add_home_slider`, 'POST', formData);}
-const addsupplierslider = async (formData) => {return await fetchData(`${frontEndURL}/api/add_supplier_slider`, 'POST', formData);}
+const addsupplierslider = async (formData) => {return await fetchData(`/api/add_supplier_slider`, 'POST', formData);}
 const registerpromotionemail = async (rbody) => {return await fetchData(`${frontEndURL}/api/register_promo_email`, 'POST', rbody);}
 const upsertterms = async (rbody) => {return await fetchData(`${frontEndURL}/api/upsert_terms_conditions`, 'POST', rbody);}
 const adddynamicterms = async (rbody) => {return await fetchData(`${frontEndURL}/api/add_new_dynamic_terms`, 'POST', rbody);}
