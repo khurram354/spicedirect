@@ -21,12 +21,13 @@ export async function POST(request) {
         };
 
         for (let [key, value] of formData.entries()) {
+            if(typeof value === 'object' && value.name){
             if (key.startsWith('desktop')) {
                 data.desktop.push(value);
             }
             if (key.startsWith('mobile')) {
                 data.mobile.push(value);
-            }
+            }}
         }
         if (data.desktop.length === 0 && data.mobile.length === 0) { return handleError(null, "no image found, upload again please") };
         let images = [];
