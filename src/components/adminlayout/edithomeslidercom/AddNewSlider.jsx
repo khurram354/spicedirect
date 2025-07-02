@@ -12,7 +12,7 @@ const AddNewSlider = () => {
     const [msg, setMsg] = useState("");
 
     async function getallsliderimages() {
-        const result = await call_api.getallhomeslider();
+        const result = await call_api.get_allhomeslider();
         if (result.success) {
             setCheckslider(false);
             setSliderImages(result.sliders);

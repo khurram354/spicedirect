@@ -41,7 +41,7 @@ const Slide = ({ sliderFiles, mobileImageFiles }) => {
                         <div className='lg:h-[600px]'>
                             <Image
                                 // src={`${isMobile ? '/homesliderimages/mobileslider':'/homesliderimages'}/${ele}`}
-                                src={`/images/homeslider/${ele.imageurl}`}
+                                src={`${process.env.NEXT_PUBLIC_AWS_URL}/${ele.imageurl}`}
                                 width={1280}
                                 height={800}
                                 alt="Picture of the author"

@@ -35,6 +35,7 @@ const getallhomeblog = async () => {const resp = await fetchData(`${backEndURL}/
 const getsingleblog = async (id) => {const resp = await fetchData(`${backEndURL}/api/get_blog_byid/${id}`); return resp?.blog;}
 const logoutuser = async () => {return await fetchData(`/api/logout`);}
 const getallhomeslider = async() => {return await fetchData(`${frontEndURL}/api/get_all_homeslider_images`)}
+const get_allhomeslider = async() => {return await fetchData(`/api/get_all_homeslider_images`)}
 const deletehomeslider = async (id) => {return await fetchData(`${frontEndURL}/api/delete_homeslider/${id}`,'DELETE');}
 const getallsupplierimages = async() => {return await fetchData(`${frontEndURL}/api/get_all_supplier_images`)} 
 const getall_adminsupplierimages = async() => {return await fetchData(`/api/get_all_supplier_images`)} 
@@ -99,5 +100,6 @@ const call_api = {
   get_allsubcategories,
   getmenucategories,
   getall_adminsupplierimages,
+  get_allhomeslider,
 };
 export default call_api;
