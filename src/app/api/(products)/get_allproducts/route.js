@@ -40,7 +40,7 @@ export async function POST(request) {
             }
         } else {
             if (searchText) {
-                query = { name: { $regex: searchText, $options: 'i' } }
+                query = { name: { $regex: searchText, $options: 'i' },active:true }
                 const resp = await InventoryProduct.find(query).populate('category').populate('vat');
                 const productData = resp.slice(start_index, end_index);
                 const hasMore = end_index < resp.length;
