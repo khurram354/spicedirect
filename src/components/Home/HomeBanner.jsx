@@ -9,8 +9,8 @@ const HomeBanner = ({ homeBanners }) => {
         <section className={`sm:w-11/12 md:w-5/6 m-auto sm:mt-8 rounded-sm md:bg-red-100 md:p-4`}>
             <div>
                 <div className="grid md:grid-cols-2 md:gap-4 sm:gap-2">
-                    <Link className="sm:h-64 md:h-96 lg:h-[450px]"
-                    href={`/product?offers=${newArrivals[0]?.name}`}
+                    <span className="sm:h-64 md:h-96 lg:h-[450px]"
+                    // href={`/product?offers=${newArrivals[0]?.name}`}
                     >
                         <Image
                             src={`${process.env.NEXT_PUBLIC_AWS_URL}/${newArrivals[0]?.image_name[0]}`}
@@ -19,13 +19,13 @@ const HomeBanner = ({ homeBanners }) => {
                             alt="Upload New Arrivals"
                             className="object-cover w-full h-full rounded-sm bg-white"
                         />
-                    </Link>
+                    </span>
                     <div className="grid grid-cols-2 sm:gap-3 sm:mt-4 md:mt-1 md:bg-inherit">
                         {
                             remainingProducts && remainingProducts.map((banner, index) => (
-                                <Link 
+                                <span 
                                 className="sm:h-36 md:h-44 lg:h-[215px]" key={index}
-                                href={`/product?offers=${banner?.name}`}
+                                // href={`/product?offers=${banner?.name}`}
                                 >
                                     <Image
                                         src={`${process.env.NEXT_PUBLIC_AWS_URL}/${banner?.image_name[0]}`}
@@ -34,7 +34,7 @@ const HomeBanner = ({ homeBanners }) => {
                                         alt="Upload New Arrivals"
                                         className="object-cover w-full h-full rounded-sm bg-white"
                                     />
-                                </Link>
+                                </span>
                             ))
                         }
 

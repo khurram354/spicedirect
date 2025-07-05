@@ -9,7 +9,8 @@ const FeatureSection = () => {
                     featureItems && featureItems.map((item, index) => (
                         <div className="flex xl:px-8 sm:px-2 border-x-2 border-gray-400 h-full items-center" key={index}>
                             <span className="pr-2">{item.icon}</span>
-                            <Link href={item.url} className="text-sm font-medium">{item.name}</Link>
+                            {/* <Link href={item.url} className="text-sm font-medium">{item.name}</Link> */}
+                            <span className="text-sm font-medium">{item.name}</span>
                         </div>
                     ))
                 }
