@@ -6,7 +6,10 @@ import { handleError } from "@/utils/errorHandler";
 
 const searchFunction = async(query = {}, start_index, end_index) => {
     try {
-        const resp = await InventoryProduct.find({...query, active:true}).populate('category').populate('subcategory').populate('subsubcategory').populate('vat').sort({ favourite: -1 });
+        const result = await InventoryProduct.find({...query, active:true}).populate('category').populate('subcategory').populate('subsubcategory').populate('vat').sort({ name: 1 });
+        const resp = [...result.filter(p => p.favourite).sort((a,b)=>a.name.localeCompare(b.name)),
+            ...result.filter(p => !p.favourite).sort((a,b)=>a.name.localeCompare(b.name))
+        ];
                 const productData = resp.slice(start_index, end_index);
                 const hasMore = end_index < resp.length;
                 const response = {
