@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 const SearchBar = ({ closeDropDownHandler }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [windoWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+  const [windoWidth, setWindowWidth] = useState(0);
   const router = useRouter();
   const dispatch = useAppDispatch();
   const handleKeyDown = (e) => {
@@ -19,6 +19,7 @@ const SearchBar = ({ closeDropDownHandler }) => {
 
   useEffect(()=>{
     const handleResize = () => setWindowWidth(window.innerWidth);
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   },[])
@@ -53,7 +54,7 @@ const SearchBar = ({ closeDropDownHandler }) => {
             <div className='flex justify-between md:w-5/6 xl:w-4/6 sm:w-full'>
               <div className='sm:w-[49%] md:w-auto'>
                 <p className='text-white mt-4 md:text-sm sm:text-xs sm:pb-2'>
-                  {windoWidth < 550 ? 'For Order Call' : 'For Order Please Contact Us'}
+                  {windoWidth > 0 && (windoWidth < 550 ? 'For Order Call' : 'For Order Please Contact Us')}
                 </p>
                 <Link  href={'tel:01415303120'} className='flex bg-red-500 justify-center py-2 shadow-md'>
                   <span className='sm:pr-2 xl:pr-4'><FaPhone className='text-warningcolor text-xl' /></span>
