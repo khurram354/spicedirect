@@ -20,7 +20,7 @@ const Footer = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="mt-8 grid grid-cols-2 sm:gap-10 md:gap-x-20 xl:gap-x-24 2xl:gap-x-28 sm:gap-y-10 lg:mt-0 lg:grid-cols-5 lg:gap-y-8">
+            <div className="mt-8 grid grid-cols-2 sm:gap-10 md:gap-x-20 xl:gap-x-24 2xl:gap-x-[10rem] sm:gap-y-10 lg:mt-0 lg:grid-cols-5 lg:gap-y-8">
               {/* <div className="col-span-2">
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">Get the latest news!</h2>
