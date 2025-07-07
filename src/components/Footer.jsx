@@ -8,10 +8,10 @@ import PromotionEmail from "./footercom/PromotionEmail";
 const Footer = () => {
   return (
     <>
-      <footer className="bg-white">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+      <footer className="bg-gray-100 md:mt-10 sm:mt-5">
+        <div className="mx-auto md:max-w-[85%] sm:max-w-[95%] px-12 md:py-16 sm:py-10 sm:px-6">
           <div className="lg:flex lg:items-start lg:gap-8">
-            <div className="w-48 h-42">
+            <div className="w-48 h-42 mr-12">
               <Image
                 src="/logo/spicedirect_logo.png"
                 width={500}
@@ -20,16 +20,16 @@ const Footer = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16">
-              <div className="col-span-2">
+            <div className="mt-8 grid grid-cols-2 md:gap-x-20 sm:gap-10 sm:gap-y-10 lg:mt-0 lg:grid-cols-5 lg:gap-y-8">
+              {/* <div className="col-span-2">
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">Get the latest news!</h2>
                   <p className="mt-4 text-gray-500">
                     Sign up to receive the latest offers and exclusive sales updates!
                   </p>
                 </div>
-              </div>
-              <PromotionEmail/>
+              </div> */}
+              {/* <PromotionEmail/> */}
               <FooterLinks/>
               <ul className="col-span-2 flex justify-start gap-6 lg:col-span-5 lg:justify-end">
                 {
