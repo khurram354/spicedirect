@@ -11,7 +11,7 @@ const Footer = () => {
       <footer className="bg-gray-100 md:mt-10 sm:mt-5">
         <div className="mx-auto md:max-w-[85%] sm:max-w-[95%] px-12 md:py-16 sm:py-10 sm:px-6">
           <div className="lg:flex lg:items-start lg:gap-8">
-            <div className="w-48 h-42 mr-12">
+            <div className="sm:w-48 h-42 mr-12">
               <Image
                 src="/logo/spicedirect_logo.png"
                 width={500}
@@ -20,7 +20,7 @@ const Footer = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="mt-8 grid grid-cols-2 md:gap-x-20 sm:gap-10 lg:gap-x-20 xl:gap-x-24 2xl:gap-x-28 sm:gap-y-10 lg:mt-0 lg:grid-cols-5 lg:gap-y-8">
+            <div className="mt-8 grid grid-cols-2 sm:gap-8 2xl:gap-x-32 sm:gap-y-10 lg:mt-0 lg:grid-cols-5 lg:gap-y-8">
               {/* <div className="col-span-2">
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">Get the latest news!</h2>
