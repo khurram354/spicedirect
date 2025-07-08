@@ -22,7 +22,7 @@ const FindUs = () => {
           </span>
           <div>
             <h6 className="text-lg font-semibold text-secondary">Working Hours</h6>
-            <p className="text-sm text-gray-700">Mon - Fri: 9 AM - 6 PM</p>
+            <p className="text-sm text-gray-700">Mon - Fri: 8 AM - 8 PM</p>
             <p className="text-sm text-gray-700">Sat - Sun: Closed</p>
           </div>
         </div>
