@@ -35,7 +35,7 @@ const FindUs = () => {
             <Link href={'tel:01415303120'} className="text-sm text-gray-600">0141 530 3120</Link>
           </div>
         </div>
-        <Link  href={'mailto:Orders@spicedirectwholesale.co.uk'} className="flex space-x-3  flex-col items-center">
+        <Link  href={`/customer_service`} className="flex space-x-3  flex-col items-center">
           <span className="text-3xl text-dangercolor flex">
             <FaEnvelope />
             <h6 className="text-lg font-semibold text-secondary sm:text-center px-2">Email Us</h6>

@@ -66,14 +66,15 @@ const SearchBar = ({ closeDropDownHandler }) => {
                 <p className='text-white mt-4 md:text-sm sm:text-xs pb-2 text-center'>
                   Contact Us By Email
                 </p>
-                <Link href={'mailto:Orders@spicedirectwholesale.co.uk'} 
-                onClick={()=>{
-                  if(!window.navigator.userAgent.includes("Android") && !window.navigator.userAgent.includes("iPhone")){
-                    setTimeout(()=>{
-                      window.open("https://mail.google.com/mail/?view=cm&to=Orders@spicedirectwholesale.co.uk","_blank")
-                    },500)
-                  }
-                }}
+                <Link href={`/customer_service`}
+                // href={'mailto:Orders@spicedirectwholesale.co.uk'} 
+                // onClick={()=>{
+                //   if(!window.navigator.userAgent.includes("Android") && !window.navigator.userAgent.includes("iPhone")){
+                //     setTimeout(()=>{
+                //       window.open("https://mail.google.com/mail/?view=cm&to=Orders@spicedirectwholesale.co.uk","_blank")
+                //     },500)
+                //   }
+                // }}
                 className='flex bg-red-500 justify-center p-2 shadow-md'>
                   <span className='pr-2'><FaEnvelope className='text-warningcolor text-xl' /></span>
                   <span className='text-white cursor-pointer sm:text-sm lg:text-base'>Orders@spicedirectwholesale.co.uk</span>
@@ -93,7 +94,7 @@ const SearchBar = ({ closeDropDownHandler }) => {
               <p className='text-white mt-4 md:text-sm sm:text-xs pb-2 text-center'>
                 Contact Us By Email
               </p>
-              <Link href={'mailto:Orders@spicedirectwholesale.co.uk'} className='flex bg-red-500 justify-center p-2 shadow-md'>
+              <Link href={`/customer_service`} className='flex bg-red-500 justify-center p-2 shadow-md'>
                 <span className='pr-2'><FaEnvelope className='text-warningcolor text-xl' /></span>
                 <span className='text-white cursor-pointer sm:text-sm lg:text-base'>Orders@spicedirectwholesale.co.uk</span>
               </Link>
