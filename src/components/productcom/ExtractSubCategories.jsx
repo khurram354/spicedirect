@@ -52,7 +52,7 @@ const ExtractSubCategories = ({ allcategories }) => {
                     </div>
 
                     {
-                        cate.subcategories && cate.subcategories.length > 0 && cate._id === cateid && cate.subcategories.map((subcate, index) => (
+                        cate.subcategories && cate.subcategories.filter(sc => sc.name && sc.name.trim() !=="").length > 0 && cate._id === cateid && cate.subcategories.map((subcate, index) => (
                             <div key={index}>
 
                                 <div className="flex pl-4 items-center">
