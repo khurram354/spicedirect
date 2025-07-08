@@ -52,10 +52,10 @@ const SearchBar = ({ closeDropDownHandler }) => {
               className="ring-4 w-full rounded-sm lg:px-10 sm:px-4 sm:text-base lg:py-3 sm:py-2 text-gray-600 focus:outline-dangercolor"
             />
             <FaSearch className="absolute lg:top-6 lg:right-32 text-gray-400 text-xl sm:top-5 md:right-20 sm:right-10" />
-            <div className='flex justify-between sm:w-[95%] lg:w-full'>
+            <div className='flex justify-between sm:w-[97%] lg:w-full'>
               <div className='sm:w-[49%] md:w-auto'>
                 <p className='text-white mt-4 md:text-sm sm:text-xs sm:pb-2'>
-                  {windoWidth > 0 && (windoWidth < 550 ? 'Contact Us' : 'Contact Us')}
+                  {windoWidth > 0 && (windoWidth < 550 ? 'Contact Us By Phone' : 'Contact Us By Phone')}
                 </p>
                 <Link href={'tel:01415303120'} className='flex bg-red-500 justify-center py-2 shadow-md px-3'>
                   <span className='sm:pr-2 xl:pr-4'><FaPhone className='text-warningcolor text-xl' /></span>
@@ -64,7 +64,7 @@ const SearchBar = ({ closeDropDownHandler }) => {
               </div>
               <div className='sm:hidden lg:block md:w-auto'>
                 <p className='text-white mt-4 md:text-sm sm:text-xs pb-2 text-center'>
-                  Order Emails To Enquiries
+                  Contact Us By Email
                 </p>
                 <Link href={'mailto:Orders@spicedirectwholesale.co.uk'} 
                 onClick={()=>{
@@ -81,7 +81,7 @@ const SearchBar = ({ closeDropDownHandler }) => {
               </div>
               <div className='sm:w-[49%] md:w-auto'>
                 <p className='text-white mt-4 md:text-sm sm:text-xs pb-2'>
-                  Contact Us on Whatsapp
+                  Contact Us By Whatsapp
                 </p>
                 <Link href={'https://wa.me/00447751980423'} className='flex bg-red-500 justify-center p-2 shadow-md'>
                   <span className='pr-2'><FaWhatsappSquare className='text-warningcolor text-xl' /></span>
@@ -91,7 +91,7 @@ const SearchBar = ({ closeDropDownHandler }) => {
             </div>
             <div className='sm:block lg:hidden md:w-auto'>
               <p className='text-white mt-4 md:text-sm sm:text-xs pb-2 text-center'>
-                Order Emails To Enquiries
+                Contact Us By Email
               </p>
               <Link href={'mailto:Orders@spicedirectwholesale.co.uk'} className='flex bg-red-500 justify-center p-2 shadow-md'>
                 <span className='pr-2'><FaEnvelope className='text-warningcolor text-xl' /></span>

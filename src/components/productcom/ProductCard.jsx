@@ -103,8 +103,8 @@ const ProductCard = ({ type, allcategories }) => {
               <hr />
               <div className=''>
                 <div>
-                  <h3 className="text-[12px] font-medium  px-2 pt-2 text-dangercolor">SDW  {product.category?.name ?? ""} </h3>
-                  <h3 className="text-[12px] font-medium  px-2 text-dangercolor">SKU_0{product.barcode}</h3>
+                  {/* <h3 className="text-[12px] font-medium  px-2 pt-2 text-dangercolor">SDW  {product.category?.name ?? ""} </h3> */}
+                  <h3 className="text-[12px] font-medium  p-2 text-dangercolor">SKU_0{product.barcode}</h3>
                 </div>
                 <p className="text-sm px-2 text-gray-600 leading-4 font-semibold">{product.name}</p>
                 <div className='py-2'>
