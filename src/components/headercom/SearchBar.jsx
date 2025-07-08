@@ -59,7 +59,7 @@ const SearchBar = ({ closeDropDownHandler }) => {
                 </p>
                 <Link href={'tel:01415303120'} className='flex bg-red-500 justify-center py-2 shadow-md px-3'>
                   <span className='sm:pr-2 xl:pr-4'><FaPhone className='text-warningcolor text-xl' /></span>
-                  <span className='text-white cursor-pointer sm:text-sm lg:text-base'>01415303120</span>
+                  <span className='text-white cursor-pointer sm:text-sm lg:text-base'>0141 530 3120</span>
                 </Link>
               </div>
               <div className='sm:hidden lg:block md:w-auto'>
