@@ -55,16 +55,16 @@ const SearchBar = ({ closeDropDownHandler }) => {
             <div className='flex justify-between sm:w-[95%] lg:w-full'>
               <div className='sm:w-[49%] md:w-auto'>
                 <p className='text-white mt-4 md:text-sm sm:text-xs sm:pb-2'>
-                  {windoWidth > 0 && (windoWidth < 550 ? 'For Order Call' : 'For Order Please Contact Us')}
+                  {windoWidth > 0 && (windoWidth < 550 ? 'Contact Us' : 'Contact Us')}
                 </p>
-                <Link href={'tel:01415303120'} className='flex bg-red-500 justify-center py-2 shadow-md'>
+                <Link href={'tel:01415303120'} className='flex bg-red-500 justify-center py-2 shadow-md px-3'>
                   <span className='sm:pr-2 xl:pr-4'><FaPhone className='text-warningcolor text-xl' /></span>
                   <span className='text-white cursor-pointer sm:text-sm lg:text-base'>01415303120</span>
                 </Link>
               </div>
               <div className='sm:hidden lg:block md:w-auto'>
                 <p className='text-white mt-4 md:text-sm sm:text-xs pb-2 text-center'>
-                  For Order Email
+                  Order Emails To Enquiries
                 </p>
                 <Link href={'mailto:Orders@spicedirectwholesale.co.uk'} 
                 onClick={()=>{
@@ -81,7 +81,7 @@ const SearchBar = ({ closeDropDownHandler }) => {
               </div>
               <div className='sm:w-[49%] md:w-auto'>
                 <p className='text-white mt-4 md:text-sm sm:text-xs pb-2'>
-                  For Order on Whatsapp
+                  Contact Us on Whatsapp
                 </p>
                 <Link href={'https://wa.me/00447751980423'} className='flex bg-red-500 justify-center p-2 shadow-md'>
                   <span className='pr-2'><FaWhatsappSquare className='text-warningcolor text-xl' /></span>
@@ -91,7 +91,7 @@ const SearchBar = ({ closeDropDownHandler }) => {
             </div>
             <div className='sm:block lg:hidden md:w-auto'>
               <p className='text-white mt-4 md:text-sm sm:text-xs pb-2 text-center'>
-                For Order Email
+                Order Emails To Enquiries
               </p>
               <Link href={'mailto:Orders@spicedirectwholesale.co.uk'} className='flex bg-red-500 justify-center p-2 shadow-md'>
                 <span className='pr-2'><FaEnvelope className='text-warningcolor text-xl' /></span>
