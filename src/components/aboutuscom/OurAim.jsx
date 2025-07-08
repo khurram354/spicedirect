@@ -38,7 +38,7 @@ const ourProcessArray = [
         id:10,
         name:'Sourcing the Best Products',
         desc:'We work directly with local farmers and suppliers to source high-quality cheeses, vegetables, and dry foods.',
-        url:'/images/aboutus/ouraim/best_products.jpg'
+        url:'/images/aboutus/ouraim/source_products.jpg'
     },{
         id:20,
         name:'Packaging with Care',
