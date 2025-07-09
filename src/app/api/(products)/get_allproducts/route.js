@@ -7,9 +7,11 @@ import { handleError } from "@/utils/errorHandler";
 const searchFunction = async(query = {}, start_index, end_index) => {
     try {
         const result = await InventoryProduct.find({...query, active:true}).populate('category').populate('subcategory').populate('subsubcategory').populate('vat').sort({ name: 1 });
-        const resp = [...result.filter(p => p.favourite).sort((a,b)=>a.name.localeCompare(b.name)),
-            ...result.filter(p => !p.favourite).sort((a,b)=>a.name.localeCompare(b.name))
-        ];
+        const sequence_products = result.filter(p => p.cate_sequence_no != null).sort((a,b)=>a.cate_sequence_no-b.cate_sequence_no);
+        const sequence_ids = new Set(sequence_products.map(p => String(p._id)));
+        const favourite_products = result.filter(p => p.favourite && !sequence_ids.has(String(p._id))).sort((a,b)=>a.name.localeCompare(b.name));
+        const remaining_products = result.filter(p => !p.favourite && !sequence_ids.has(String(p._id))).sort((a,b)=>a.name.localeCompare(b.name));
+        const resp = [...sequence_products, ...favourite_products, ...remaining_products];
                 const productData = resp.slice(start_index, end_index);
                 const hasMore = end_index < resp.length;
                 const response = {

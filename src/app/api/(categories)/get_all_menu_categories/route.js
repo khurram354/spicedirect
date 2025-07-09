@@ -34,7 +34,7 @@ export async function GET() {
                     name: {$first: "$name"},
                     subcategories: {$push: "$subcategories"}
                 }
-            }
+            },{$sort:{name:1}}
         ])  
         return handleSuccess(allMenuCategories, 'categories', "Get all categories successfully");
     } catch (error) {

@@ -62,6 +62,8 @@ const addsupplierslider = async (formData) => {return await fetchData(`/api/add_
 const registerpromotionemail = async (rbody) => {return await fetchData(`${frontEndURL}/api/register_promo_email`, 'POST', rbody);}
 const upsertterms = async (rbody) => {return await fetchData(`${frontEndURL}/api/upsert_terms_conditions`, 'POST', rbody);}
 const adddynamicterms = async (rbody) => {return await fetchData(`${frontEndURL}/api/add_new_dynamic_terms`, 'POST', rbody);}
+const addprosequence = async (rbody) => {return await fetchData(`/api/add_prosequence`, 'PUT', rbody);}
+const checkseqnumber = async (rbody) => {return await fetchData(`/api/get_existing_seq_no`, 'POST', rbody);}
 
 const call_api = {
   getallcategories,
@@ -101,5 +103,7 @@ const call_api = {
   getmenucategories,
   getall_adminsupplierimages,
   get_allhomeslider,
+  addprosequence,
+  checkseqnumber,
 };
 export default call_api;

@@ -9,6 +9,7 @@ import SubSubCategoryDialogue from './SubSubCategoryDialogue';
 import Pagination from "@/components/common/Pagination";
 import { FaSearch } from "react-icons/fa";
 import call_api from "@/helper/Api";
+import ProCateSequence from "./ProCateSequence";
 
 const ProductTable = () => {
   const [productdata, setProductdata] = useState([]);
@@ -18,6 +19,7 @@ const ProductTable = () => {
   const [dialogueOpen, setDialogueOpen] = useState(false);
   const [subcatedialogueopen, setSubcatedialogueopen] = useState(false);
   const [subsubcatedialogueopen, setSubsubcatedialogueopen] = useState(false);
+  const [proseqdialogueopen, setProseqdialogueopen] = useState(false)
   const [productId, setProductId] = useState("");
   const [checkChanges, setCheckChanges] = useState(false);
 
@@ -47,6 +49,10 @@ const ProductTable = () => {
     setSubcatedialogueopen(false);
     setProductId(id);
     setSubsubcatedialogueopen(!subsubcatedialogueopen);
+  }
+  const AddProductSeqHandler = (id) => {
+    setProductId(id);
+    setProseqdialogueopen(!proseqdialogueopen);
   }
   const fetchProducts = async () => {
     const data = await getAllProducts();
@@ -83,7 +89,6 @@ const ProductTable = () => {
     }
   }, [searchText]);
 
-
   return (
     <>
       <div className='w-3/4 px-4 mx-auto mt-3 relative left-24 top-5'>
@@ -108,6 +113,7 @@ const ProductTable = () => {
                   <th className="px-1 py-3 w-28 text-center">Sub SubCategory</th>
                   <th className="px-1 py-3 w-28 text-center">Status</th>
                   <th className="px-1 py-3 w-32 text-center">Favourite Product</th>
+                  <th className="px-1 py-3 w-24 text-center">Product Sequence</th>
                   <th className="px-1 py-3 w-40 text-center">Update Images</th>
                 </tr>
               </thead>
@@ -146,6 +152,16 @@ const ProductTable = () => {
                       </div>
                       <div className="">
                         <TbEdit className='w-5 h-5 text-secondary cursor-pointer' onClick={(e) => AddToFavHandler(pro._id)} />
+                      </div>
+                    </td>
+                    <td className="px-1 py-3 text-sm w-24 relative">{pro?.cate_sequence_no??''}
+                       <div className="absolute right-20 top-10">
+                        {
+                          proseqdialogueopen && productId === pro._id && <ProCateSequence setProseqdialogueopen={setProseqdialogueopen} proId={pro._id} procateid = {pro.category} setCheckChanges={setCheckChanges}/>
+                        }
+                      </div>
+                      <div className="">
+                        <TbEdit className='w-5 h-5 text-secondary cursor-pointer' onClick={(e) => AddProductSeqHandler(pro._id)} />
                       </div>
                     </td>
                     <td className="px-1 py-3 text-sm w-40 relative">

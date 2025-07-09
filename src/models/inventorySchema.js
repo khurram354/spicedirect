@@ -21,6 +21,7 @@ const inventorySchema = new mongoose.Schema({
     weight_grams:       {type: Number, required: false, default: 0, min: 0},
     weight_kg:          {type: Number, required: false, default: 0, min: 0},
     default_sale_price: {type: Number, required: true},
+    cate_sequence_no:   {type: Number, trim:true},
     item_image:         {type: String},
     image_name: {
         type: [String],
