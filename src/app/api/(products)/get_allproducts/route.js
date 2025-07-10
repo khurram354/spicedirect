@@ -5,13 +5,19 @@ import { NextResponse } from "next/server";
 import { handleError } from "@/utils/errorHandler";
 
 const searchFunction = async(query = {}, start_index, end_index) => {
-    try {
+    try { 
         const result = await InventoryProduct.find({...query, active:true}).populate('category').populate('subcategory').populate('subsubcategory').populate('vat').sort({ name: 1 });
+        let resp = []
+        if(query.subcategory){
+            const seq_sub_category = result.filter(p => p.subcate_sequence_no != null).sort((a,b)=>a.subcate_sequence_no-b.subcate_sequence_no);
+            const remaining_pro = result.filter(p => !p.subcate_sequence_no);
+            resp = [...seq_sub_category, ...remaining_pro];
+        }else{
         const sequence_products = result.filter(p => p.cate_sequence_no != null).sort((a,b)=>a.cate_sequence_no-b.cate_sequence_no);
         const sequence_ids = new Set(sequence_products.map(p => String(p._id)));
         const favourite_products = result.filter(p => p.favourite && !sequence_ids.has(String(p._id))).sort((a,b)=>a.name.localeCompare(b.name));
         const remaining_products = result.filter(p => !p.favourite && !sequence_ids.has(String(p._id))).sort((a,b)=>a.name.localeCompare(b.name));
-        const resp = [...sequence_products, ...favourite_products, ...remaining_products];
+        resp = [...sequence_products, ...favourite_products, ...remaining_products];}
                 const productData = resp.slice(start_index, end_index);
                 const hasMore = end_index < resp.length;
                 const response = {
