@@ -1,12 +1,14 @@
 import { BiCategory } from "react-icons/bi";
 import { TiTick } from "react-icons/ti";
 import { BiSolidOffer } from "react-icons/bi";
-import { MdLocalOffer } from "react-icons/md";
+import { MdLocalOffer, MdOutlineLocalOffer } from "react-icons/md";
 import { FaTruckFast } from "react-icons/fa6";
-import { FaFacebook, FaInstagramSquare} from "react-icons/fa";
+import { FaFacebook, FaInstagramSquare, FaRegStar, FaRegUser} from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { PiUsersThreeBold } from "react-icons/pi";
 import { RiYoutubeFill } from "react-icons/ri";
-import { AiFillTikTok } from "react-icons/ai";
+import { AiFillTikTok,  AiOutlineCustomerService } from "react-icons/ai";
+import { IoHomeOutline } from "react-icons/io5";
 export const MobileMenuItem = [
     // {
     //     id: "1",
@@ -96,41 +98,55 @@ export const MobileMenuItem = [
             },
         ]
     },
+    // {
+    //     id: '3',
+    //     name: "Special Offers",
+    //     icon: < BiCategory  />,	
+    //     link: '/product?offers=special_offers',	
+    //     subItems: []
+    // },
     {
         id: '3',
-        name: "Special Offers",
-        icon: < BiCategory  />,	
-        link: '/product?offers=special_offers',	
+        name: "Promotions",
+        icon: < MdOutlineLocalOffer />,	
+        link: '/product?offers=seasonal_promotions',	
         subItems: []
     },
+    // {
+    //     id: "4",
+    //     name: "New Arrivals",
+    //     icon: < BiCategory  />,
+    //     link: '/product?offers=new_arrivals',        
+    //     subItems: []
+    // }
     {
         id: "4",
-        name: "New Arrivals",
-        icon: < BiCategory  />,
-        link: '/product?offers=new_arrivals',        
+        name: "Top Selling",
+        icon: < FaRegStar />,
+        link: '/product?offers=top_selling',        
         subItems: []
     },{
         id: "5",
         name: "My Account",
-        icon: < BiCategory  />,   
+        icon: < FaRegUser />,   
         link:'#',     
         subItems: []
     },{
         id: "6",
         name: "About Us",
-        icon: < BiCategory  />,
+        icon: < PiUsersThreeBold />,
         link: '/aboutus',        
         subItems: []
     },{
         id: "7",
         name: "Customer Service",
-        icon: < BiCategory  />,   
+        icon: <AiOutlineCustomerService />,   
         link:'/customer_service',     
         subItems: []
     },{
         id: "8",
         name: "Back to Home",
-        icon: < BiCategory  />,   
+        icon: <IoHomeOutline />,   
         link:'/',     
         subItems: []
     },
