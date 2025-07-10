@@ -95,7 +95,7 @@ const NavigationBar = ({ hamBurgerHandler, openDropDownHandler, closeDropDownHan
                   </div>
                 </div>
               </div>
-              <div className='relative z-30'>
+              {/* <div className='relative z-30'>
                 <div className="border-r-2 border-white-500 text-white font-medium bg-warningcolor text-sm h-[40px] flex justify-center items-center px-4 hover:bg-white hover:text-warningcolor transform transition duration-300 cursor-pointer" onMouseEnter={(e) => openDropDownHandler("cuisines")}>
                   <span>SHOP BY CUISINE</span>
                   <span>
@@ -114,9 +114,9 @@ const NavigationBar = ({ hamBurgerHandler, openDropDownHandler, closeDropDownHan
                     }
                   </div>
                 </div>
-              </div>
+              </div> */}
               <Link href="/product?offers=seasonal_promotions" className="border-r-2 border-white-500 text-white font-medium bg-warningcolor text-sm h-[40px] flex justify-center items-center px-4 hover:bg-white hover:text-warningcolor transform transition duration-300">PROMOTIONS</Link>
-              <Link href="/product?offers=top_selling" className="border-r-2 border-white-500 text-white font-medium bg-warningcolor text-sm h-[40px] flex justify-center items-center px-4 hover:bg-white hover:text-warningcolor transform transition duration-300">TOP SELLINGS</Link>
+              <Link href="/product?offers=top_selling" className="text-white font-medium bg-warningcolor text-sm h-[40px] flex justify-center items-center px-4 hover:bg-white hover:text-warningcolor transform transition duration-300">TOP SELLINGS</Link>
               {/* <Link href="#" className=" border-white-500 text-white font-medium bg-warningcolor text-sm h-[40px] flex justify-center items-center px-4 hover:bg-white hover:text-warningcolor transform transition duration-300">BRANDS</Link> */}
             </div>
           </div>

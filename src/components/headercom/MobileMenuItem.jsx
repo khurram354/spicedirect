@@ -8,38 +8,38 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { RiYoutubeFill } from "react-icons/ri";
 import { AiFillTikTok } from "react-icons/ai";
 export const MobileMenuItem = [
-    {
-        id: "1",
-        name: "Shope By Cuisine",
-        icon: <  BiCategory />,		
-        link:'#',
-        subItems: [
-            { 
-                id: "200",
-                icon: < BiCategory />,
-                name: "English", 
-                link: "/product?cuis_id=English",
-            },
-            { 
-                id: "201",
-                icon: < BiCategory  />,
-                name: "Chinese",
-                link: "/product?cuis_id=Chinese", 
-            },
-            { 
-                id: "200",
-                icon: < BiCategory  />,
-                name: "Italian", 
-                link: "/product?cuis_id=Italian",
-            },
-            { 
-                id: "201",
-                icon: < BiCategory  />,
-                name: "Indian",
-                link: "/product?cuis_id=Indian", 
-            },
-        ]
-    },
+    // {
+    //     id: "1",
+    //     name: "Shope By Cuisine",
+    //     icon: <  BiCategory />,		
+    //     link:'#',
+    //     subItems: [
+    //         { 
+    //             id: "200",
+    //             icon: < BiCategory />,
+    //             name: "English", 
+    //             link: "/product?cuis_id=English",
+    //         },
+    //         { 
+    //             id: "201",
+    //             icon: < BiCategory  />,
+    //             name: "Chinese",
+    //             link: "/product?cuis_id=Chinese", 
+    //         },
+    //         { 
+    //             id: "200",
+    //             icon: < BiCategory  />,
+    //             name: "Italian", 
+    //             link: "/product?cuis_id=Italian",
+    //         },
+    //         { 
+    //             id: "201",
+    //             icon: < BiCategory  />,
+    //             name: "Indian",
+    //             link: "/product?cuis_id=Indian", 
+    //         },
+    //     ]
+    // },
     {
         id: '2',
         name: "Shop By Category",

@@ -10,9 +10,9 @@ const ShopByCuisine = ({ cuisines }) => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-3 md:gap-4 lg:gap-6 sm:h-64 lg:h-56 md:h-[500px]">
           {
             cuisines && cuisines.map((cuisine, index) => (
-              <Link
+              <div
                 key={index}
-                href={`/product?cuis_id=${cuisine?.name}`}
+                // href={`/product?cuis_id=${cuisine?.name}`}
                 className="relative"
                 style={{
                   backgroundImage: `url('${process.env.NEXT_PUBLIC_AWS_URL}/${cuisine?.image_name[0]}')`,
@@ -25,7 +25,7 @@ const ShopByCuisine = ({ cuisines }) => {
                 }}
               >
                 <h5 className="text-white sm:text-base md:text-xl font-medium absolute md:bottom-4 md:left-6 sm:bottom-1 sm:left-2 tracking-wider">{cuisine.name}</h5>
-              </Link>
+              </div>
             ))
           }
         </div>
