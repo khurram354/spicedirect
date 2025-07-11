@@ -24,7 +24,7 @@ const ourAimArray = [
         id:5,
         name:'Our Products',
         desc:'We offer a wide range of high-quality products, including fresh vegetables, cleaning supplies, cheese, sauces and packaging solutions, all from reliable sources.',
-        url:'/images/aboutus/ourprocess/our-products.jpg'
+        url:'/images/aboutus/ourprocess/our_products.jpg'
     },{
         id:6,
         name:'Our Aim',
