@@ -3,17 +3,19 @@ import call_api from '@/helper/Api';
 import React, { useEffect, useState } from 'react';
 import { IoMdClose } from "react-icons/io";
 
-const ProSubCateSequence = ({ proId, setProsubseqdialogueopen, prosubcateid, setCheckChanges }) => {
+const ProSequenceDialogue = ({ id, procateid, setCheckChanges, sequenceType,setProseqdialogueopen, setProsubseqdialogueopen }) => {
     const [productIndex, setProductIndex] = useState(''); 
     const [error, setError] = useState("");   
     const handleClosebtn = (e) => {
+        setProseqdialogueopen(false);
         setProsubseqdialogueopen(false);
     }
     const handleSave = async() => {
         try {
-            const rbody = { proId, prosubcateid, productIndex }
-            const result = await call_api.addprosubsequence(rbody);
-            setProsubseqdialogueopen(false);
+            const rbody = sequenceType === 'category' ? {id, procateid : procateid, productIndex } : {id, prosubcateid:procateid, productIndex};
+            const result = sequenceType === "category" ? await call_api.addprosequence(rbody) : await call_api.addprosubsequence(rbody);
+            setProseqdialogueopen(false);
+            setProsubseqdialogueopen(false)
             setCheckChanges(true);
             return result.success;
         } catch (error) { setError("network error")
@@ -22,8 +24,8 @@ const ProSubCateSequence = ({ proId, setProsubseqdialogueopen, prosubcateid, set
     }
     const checkseq = async() => {
         try {
-        const rbody = { prosubcateid }
-        const getseq = await call_api.checksubseqnumber(rbody);
+        const rbody = sequenceType === "category" ? { procateid: procateid } : {prosubcateid: procateid};
+        const getseq = sequenceType === 'category' ? await call_api.checkseqnumber(rbody) : await call_api.checksubseqnumber(rbody)
         if(getseq.success){setProductIndex(getseq.value)}
         } catch (error) { setError("network error")
             console.log(error);
@@ -36,11 +38,11 @@ const ProSubCateSequence = ({ proId, setProsubseqdialogueopen, prosubcateid, set
         <section className='relative z-20'>
             <IoMdClose className='text-lg absolute right-3 top-3 text-secondary cursor-pointer' onClick={handleClosebtn}/>
             <div className='w-64 bg-gray-100 ring-2 ring-gray-300 rounded-sm p-4 shadow-sm text-center'>
-                <h6 className='sm:text-sm text-center font-medium text-secondary pb-2'>Add Sub_Cate_Sequence</h6>
+                <h6 className='sm:text-sm text-center font-medium text-secondary pb-2'>{sequenceType === "category" ?"Add Category Sequence":"Sub Category Sequence"}</h6>
                 <div className=''>
                     <input
                     type="number"
-                    placeholder="Enter sub_cate_sequence"
+                    placeholder={sequenceType === "category"?"Enter Category Sequence":"Enter SubCategory Sequence"}
                     required
                     value={productIndex}
                     onChange={(e) => setProductIndex(e.target.value)}
@@ -57,4 +59,4 @@ const ProSubCateSequence = ({ proId, setProsubseqdialogueopen, prosubcateid, set
     )
 }
 
-export default ProSubCateSequence
+export default ProSequenceDialogue

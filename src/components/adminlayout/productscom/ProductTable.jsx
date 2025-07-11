@@ -9,8 +9,7 @@ import SubSubCategoryDialogue from './SubSubCategoryDialogue';
 import Pagination from "@/components/common/Pagination";
 import { FaSearch } from "react-icons/fa";
 import call_api from "@/helper/Api";
-import ProCateSequence from "./ProCateSequence";
-import ProSubCateSequence from "./ProSubCateSequence";
+import ProSequenceDialogue from "./ProSequenceDialogue";
 
 const ProductTable = () => {
   const [productdata, setProductdata] = useState([]);
@@ -54,10 +53,12 @@ const ProductTable = () => {
   }
   const AddProductSeqHandler = (id) => {
     setProductId(id);
+    setProsubseqdialogueopen(false)
     setProseqdialogueopen(!proseqdialogueopen);
   }
   const AddProductSubSeqHandler = (id) => {
     setProductId(id);
+    setProseqdialogueopen(false)
     setProsubseqdialogueopen(!prosubseqdialogueopen);
   }
   const fetchProducts = async () => {
@@ -133,7 +134,7 @@ const ProductTable = () => {
                      <td className="px-1 py-3 text-sm w-28 relative">{pro?.cate_sequence_no??''}
                        <div className="absolute right-20 top-10">
                         {
-                          proseqdialogueopen && productId === pro._id && <ProCateSequence setProseqdialogueopen={setProseqdialogueopen} proId={pro._id} procateid = {pro.category} setCheckChanges={setCheckChanges}/>
+                          proseqdialogueopen && productId === pro._id && <ProSequenceDialogue id={pro._id} procateid = {pro.category} setCheckChanges={setCheckChanges} sequenceType = {"category"} setProseqdialogueopen={setProseqdialogueopen} setProsubseqdialogueopen={setProsubseqdialogueopen}/>
                         }
                       </div>
                       <div className="">
@@ -153,7 +154,7 @@ const ProductTable = () => {
                     <td className="px-1 py-3 text-sm w-28 relative">{pro?.subcate_sequence_no??''}
                        <div className="absolute right-20 top-10">
                         {
-                          prosubseqdialogueopen && productId === pro._id && <ProSubCateSequence setProsubseqdialogueopen={setProsubseqdialogueopen} proId={pro._id} prosubcateid = {pro.subcategory} setCheckChanges={setCheckChanges}/>
+                          prosubseqdialogueopen && productId === pro._id && <ProSequenceDialogue  id={pro._id} procateid = {pro.subcategory} setCheckChanges={setCheckChanges} sequenceType={"subcategory"} setProseqdialogueopen = {setProseqdialogueopen} setProsubseqdialogueopen={setProsubseqdialogueopen}/>
                         }
                       </div>
                       <div className="">

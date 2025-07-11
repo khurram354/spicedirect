@@ -5,10 +5,10 @@ import { handleSuccess } from "@/utils/handleSuccess";
 
 export async function PUT(request) {
     try {
-        const { proId, procateid, productIndex } = await request.json();
-        if(!proId || !procateid || !productIndex){return handleError(null, 'missing req field')}
+        const { id, procateid, productIndex } = await request.json();
+        if(!id || !procateid || !productIndex){return handleError(null, 'missing req field')}
         await dbConnect();
-        let product = await InventoryProduct.findById(proId);
+        let product = await InventoryProduct.findById(id);
         if(!product){return handleError(null, "product not found");}
         product.cate_sequence_no = productIndex;
         const resp = await product.save();
