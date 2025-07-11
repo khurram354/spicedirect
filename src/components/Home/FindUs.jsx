@@ -17,13 +17,14 @@ const FindUs = () => {
           </div>
         </div>
         <div className="flex items-center space-x-3">
-          <span className="text-3xl text-secondary">
+          <span className="text-3xl text-secondary mt-3">
             <FaClock />
           </span>
           <div>
             <h6 className="text-lg font-semibold text-secondary">Working Hours</h6>
             <p className="text-sm text-gray-700">Mon - Fri: 8 AM - 8 PM</p>
-            <p className="text-sm text-gray-700">Sat - Sun: 8 AM - 6 PM</p>
+            <p className="text-sm text-gray-700">Saturday: 8 AM - 4 PM</p>
+            <p className="text-sm text-gray-700">Sunday:  11 AM - 8 PM</p>
           </div>
         </div>
         <div className="flex items-center space-x-3">
