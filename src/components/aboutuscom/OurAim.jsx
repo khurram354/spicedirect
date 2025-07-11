@@ -24,7 +24,7 @@ const ourAimArray = [
         id:5,
         name:'Our Products',
         desc:'We offer a wide range of high-quality products, including fresh vegetables, cleaning supplies, cheese, sauces and packaging solutions, all from reliable sources.',
-        url:'/images/aboutus/ourprocess/our_products.jpg'
+        url:'/images/aboutus/ourprocess/our-products.jpg'
     },{
         id:6,
         name:'Our Aim',
@@ -43,7 +43,7 @@ const ourProcessArray = [
         id:20,
         name:'Packaging with Care',
         desc:'Our products are carefully packaged to ensure freshness and longevity.',
-        url:'/images/aboutus/ouraim/package_with_care.jpg'
+        url:'/images/aboutus/ouraim/package-with-care.jpg'
     },{
         id:30,
         name:'Fast Delivery',
