@@ -12,6 +12,7 @@ const ProductCard = ({ type, allcategories }) => {
   const [productdata, setProductdata] = useState([]);
   const [pageno, setPageno] = useState(null);
   const [hasMore, setHasMore] = useState(true);
+  const [totalpages, setTotalpages] = useState(1);
   const searchParams = useSearchParams();
   const categoryId = searchParams.get("cate_id");
   const cuisineId = searchParams.get('cuis_id');
@@ -38,6 +39,7 @@ const ProductCard = ({ type, allcategories }) => {
     const rbody = { pageno, checked, searchText, cuisineId, offersId, subcateId, subsubcateId };
     const result = await call_api.getallproducts(rbody)
     setHasMore(result.hasMore);
+    setTotalpages(result.totalPages);
     return result?.data || [];
   };
 
@@ -66,6 +68,7 @@ const ProductCard = ({ type, allcategories }) => {
   }, [categoryId, cuisineId, offersId, searchString, subcateId, subsubcateId]);
 
   const pageHandler = (key) => {
+    if(typeof key === 'number') return setPageno(key);
     setPageno((prevPage) => {
       if (key === 'increament') {
         return prevPage + 1
@@ -76,7 +79,7 @@ const ProductCard = ({ type, allcategories }) => {
       return prevPage;
     })
   }
-  
+
   return (
     <section className='md:flex relative w-full'>
       {
@@ -126,6 +129,7 @@ const ProductCard = ({ type, allcategories }) => {
         pageHandler = {pageHandler}
         hasMore = {hasMore}
         pageno = {pageno}
+        totalPages={totalpages}
         />
         <div className='w-full h-20'></div>
       </div>

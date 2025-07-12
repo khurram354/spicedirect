@@ -7,6 +7,7 @@ import { handleError } from "@/utils/errorHandler";
 const searchFunction = async(query = {}, start_index, end_index) => {
     try { 
         const result = await InventoryProduct.find({...query, active:true}).populate('category').populate('subcategory').populate('subsubcategory').populate('vat').sort({ name: 1 });
+        const totalPages = Math.ceil(result.length/40);
         let resp = []
         if(query.subcategory){
             const seq_sub_category = result.filter(p => p.subcate_sequence_no != null).sort((a,b)=>a.subcate_sequence_no-b.subcate_sequence_no);
@@ -23,7 +24,8 @@ const searchFunction = async(query = {}, start_index, end_index) => {
                 const response = {
                     success: true,
                     data: productData,
-                    hasMore: hasMore
+                    hasMore: hasMore,
+                    totalPages: totalPages,
                 }
                 return response;
     } catch (error) {return handleError(error)}

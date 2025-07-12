@@ -12,6 +12,7 @@ const AddCategoryTable = () => {
   const [productdata, setProductdata] = useState([]);
   const [pageno, setPageno] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [totalpages, setTotalpages] = useState(1);
   const [searchText, setSearchText] = useState("");
   const [dialogueOpen, setDialogueOpen] = useState(false);
   const [productId, setProductId] = useState("");
@@ -23,6 +24,7 @@ const AddCategoryTable = () => {
       const rbody = { pageno, searchText, checked: [] }
       const result = await call_api.getallproducts(rbody);
       setHasMore(result.hasMore);
+      setTotalpages(result.totalPages)
       setCheckChanges(false)
       return result.data;
     } catch (error) {
@@ -56,6 +58,7 @@ const AddCategoryTable = () => {
   }, [pageno, checkChanges]);
 
   const pageHandler = (key) => {
+    if(typeof key === 'number') return setPageno(key);
     setPageno((prevPage) => {
       if (key === 'increament') {
         return prevPage + 1
@@ -153,6 +156,7 @@ const AddCategoryTable = () => {
               pageHandler={pageHandler}
               hasMore={hasMore}
               pageno={pageno}
+              totalPages={totalpages}
             />
             <div className='w-full h-20'></div>
           </div>
