@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+
+# Host
+Host: https://spicedirectwholesale.co.uk
+
+# Sitemaps
+Sitemap: https://spicedirectwholesale.co.uk/sitemap.xml
