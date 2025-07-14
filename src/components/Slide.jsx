@@ -38,13 +38,15 @@ const Slide = ({ sliderFiles, mobileImageFiles }) => {
             >
                 {sliderImages.map((ele, index) => (
                     <SwiperSlide key={index}>
-                        <div className='lg:h-[600px]'>
+                        {/* <div className='lg:h-[600px]'> */}
+                        <div className={`relative ${isMobile ? 'aspect-[3/3]' : 'aspect-[21/9]'} w-full`}>
                             <Image
                                 // src={`${isMobile ? '/homesliderimages/mobileslider':'/homesliderimages'}/${ele}`}
                                 src={`${process.env.NEXT_PUBLIC_AWS_URL}/${ele.imageurl}`}
-                                width={1280}
-                                height={800}
-                                alt="Picture of the author"
+                                // width={1280}
+                                // height={800}
+                                fill
+                                alt="Picture of the spice direct"
                                 quality={100}
                                 className='object-cover w-full h-full'
                             />
