@@ -33,8 +33,13 @@ export const metadata = {
     googleBot:{index:true,follow:true,noimageindex:false},
   },
   icons:{
-    icon:"/favicon.ico",
-    apple:"/apple-touch-icon.png"
+    icon:[{url:"/favicon.ico"},
+    {url:"/favicon-16x16.png", sizes: '16x16', type: 'image/png'},
+    { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png'},
+    { url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+    { url: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },],
+    apple: [{url: "/apple-touch-icon.png"}],
+    shortcut: [{ url: "/site.webmanifest", type: "application/manifest+json" }]
   }
 };
 
@@ -43,6 +48,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
        <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        {/* <link rel="manifest" href="/site.webmanifest" /> */}
       </head>
       <body className={inter.className}>   
         <StoreProvider>
