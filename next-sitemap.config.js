@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: 'https://spicedirectwholesale.co.uk',
+  siteUrl: 'https://www.spicedirectwholesale.co.uk',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
@@ -10,7 +10,7 @@ module.exports = {
       }
     ],
     additionalSitemaps: [
-      'https://spicedirectwholesale.co.uk/sitemap.xml',
+      'https://www.spicedirectwholesale.co.uk/sitemap.xml',
     ],
   },
   exclude: [
