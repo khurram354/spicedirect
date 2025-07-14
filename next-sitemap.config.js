@@ -10,7 +10,7 @@ module.exports = {
       }
     ],
     additionalSitemaps: [
-      'https://www.spicedirectwholesale.co.uk/sitemap.xml',
+      'https://www.spicedirectwholesale.co.uk/sitemap-0.xml',
     ],
   },
   exclude: [
