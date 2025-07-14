@@ -49,7 +49,8 @@ export default function RootLayout({ children }) {
     "@type": ["Organization", "LocalBusiness"],
     "name": "Spice Direct Wholesale",
     "url": "https://www.spicedirectwholesale.co.uk",
-    "logo": "https://www.spicedirectwholesale.co.uk/logo/spice-direct-wholesale.jpg",
+    "logo": "https://www.spicedirectwholesale.co.uk/spice-direct-wholesale.jpg",
+    "image": "https://www.spicedirectwholesale.co.uk/spice_direct_wholesale.jpg",
     "email": "Orders@spicedirectwholesale.co.uk",
     "founder": {
       "@type": "Person",
