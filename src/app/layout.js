@@ -46,7 +46,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": ["Organization", "LocalBusiness"],
+    "@type": "LocalBusiness",
     "name": "Spice Direct Wholesale",
     "url": "https://www.spicedirectwholesale.co.uk",
     "logo": "https://www.spicedirectwholesale.co.uk/spice-direct-wholesale.jpg",
@@ -62,8 +62,8 @@ export default function RootLayout({ children }) {
     ],
     "contactPoint": [{
       "@type": "ContactPoint",
-      "telephone": "+44-141-5303120",
       "contactType": "Customer Service",
+      "telephone": "+44-141-5303120",
     }],
     "address": {
       "@type": "PostalAddress",
@@ -72,13 +72,18 @@ export default function RootLayout({ children }) {
       "postalCode": "G40 3NX",
       "addressCountry": "UK"
     },
-    "openingHours": "Mo-Sa 08:00-20:00",
+    "openingHours": [
+      "Mo-Fr 08:00-20:00",
+      "Sa 08:00-16:00",
+      "Su 11:00-20:00"
+    ],
     "priceRange": "££",
+    "telephone": "+44-141-5303120",
     "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 55.84869,
-    "longitude": -4.21531,
-  }
+      "@type": "GeoCoordinates",
+      "latitude": 55.84869,
+      "longitude": -4.21531,
+    }
   };
   return (
     <html lang="en">
