@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 import StoreProvider from "./StoreProvider";
+import Script from "next/script";
 
 export const metadata = {
   title: "Spice Direct WholeSale",
@@ -93,7 +94,16 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        {/* <link rel="manifest" href="/site.webmanifest" /> */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-L2263JXSCK" strategy = "afterInteractive"/>
+        <Script id="google-analytics" strategy = "afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-L2263JXSCK');
+          `}
+        </Script>
+
       </head>
       <body className={inter.className}>
         <StoreProvider>
