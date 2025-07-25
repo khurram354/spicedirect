@@ -37,6 +37,7 @@ const ProductCard = ({ type, allcategories }) => {
       searchText = searchString
     }
     const rbody = { pageno, checked, searchText, cuisineId, offersId, subcateId, subsubcateId };
+    console.log(rbody)
     const result = await call_api.getallproducts(rbody)
     setHasMore(result.hasMore);
     setTotalpages(result.totalPages);

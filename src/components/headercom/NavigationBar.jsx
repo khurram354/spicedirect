@@ -115,7 +115,7 @@ const NavigationBar = ({ hamBurgerHandler, openDropDownHandler, closeDropDownHan
                   </div>
                 </div>
               </div> */}
-              <Link href="/product?offers=seasonal_promotions" className="border-r-2 border-white-500 text-white font-medium bg-warningcolor text-sm h-[40px] flex justify-center items-center px-4 hover:bg-white hover:text-warningcolor transform transition duration-300">PROMOTIONS</Link>
+              <Link href="/product?offers=special_offers" className="border-r-2 border-white-500 text-white font-medium bg-warningcolor text-sm h-[40px] flex justify-center items-center px-4 hover:bg-white hover:text-warningcolor transform transition duration-300">PROMOTIONS</Link>
               <Link href="/product?offers=top_selling" className="text-white font-medium bg-warningcolor text-sm h-[40px] flex justify-center items-center px-4 hover:bg-white hover:text-warningcolor transform transition duration-300">TOP SELLINGS</Link>
               {/* <Link href="#" className=" border-white-500 text-white font-medium bg-warningcolor text-sm h-[40px] flex justify-center items-center px-4 hover:bg-white hover:text-warningcolor transform transition duration-300">BRANDS</Link> */}
             </div>

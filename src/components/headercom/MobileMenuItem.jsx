@@ -109,7 +109,7 @@ export const MobileMenuItem = [
         id: '3',
         name: "Promotions",
         icon: < MdOutlineLocalOffer />,	
-        link: '/product?offers=seasonal_promotions',	
+        link: '/product?offers=special_offers',	
         subItems: []
     },
     // {
