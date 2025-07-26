@@ -66,6 +66,8 @@ const addprosequence = async (rbody) => {return await fetchData(`/api/add_proseq
 const addprosubsequence = async (rbody) => {return await fetchData(`/api/add_pro_subcate_seq`, 'PUT', rbody);}
 const checkseqnumber = async (rbody) => {return await fetchData(`/api/get_existing_seq_no`, 'POST', rbody);}
 const checksubseqnumber = async (rbody) => {return await fetchData(`/api/get_existing_subcate_seq`, 'POST', rbody);}
+const getallusers = async (rbody) => {return await fetchData(`/api/allcustomers`,'POST', rbody)};
+const checkcustomer = async (rbody) => {return await fetchData(`/api/check_customer`,'POST', rbody)};
 
 const call_api = {
   getallcategories,
@@ -109,5 +111,7 @@ const call_api = {
   checkseqnumber,
   addprosubsequence,
   checksubseqnumber,
+  getallusers,
+  checkcustomer,
 };
 export default call_api;
