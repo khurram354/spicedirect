@@ -1,16 +1,29 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js`;
 
 const PdfViewer = ({ file }) => {
     const [numPages, setNumPages] = useState(null);
     const [containerWidth, setContainerWidth] = useState(0);
+    const [pdfComponents, setPdfComponents] = useState(null);
 
+    // Dynamically import react-pdf only on client
+    useEffect(() => {
+        const loadPdf = async () => {
+            const pdf = await import("react-pdf");
+            pdf.pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js`;
+            setPdfComponents({
+                Document: pdf.Document,
+                Page: pdf.Page,
+            });
+        };
+
+        loadPdf();
+    }, []);
+
+    // Set responsive width
     useEffect(() => {
         const updateWidth = () => {
             const screenWidth = window.innerWidth;
@@ -32,15 +45,16 @@ const PdfViewer = ({ file }) => {
         setNumPages(numPages);
     };
 
+    if (!pdfComponents) return <div className="text-white text-center py-8">Loading PDF...</div>;
+
+    const { Document, Page } = pdfComponents;
+
     return (
         <div className="flex flex-col items-center justify-center px-4 py-6 w-full bg-gray-700">
             <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
                 {Array.from(new Array(numPages), (_, index) => (
                     <div key={`page_${index + 1}`} className="my-4 w-full max-w-full">
-                        <Page
-                            pageNumber={index + 1}
-                            width={containerWidth}
-                        />
+                        <Page pageNumber={index + 1} width={containerWidth} />
                     </div>
                 ))}
             </Document>
@@ -49,8 +63,6 @@ const PdfViewer = ({ file }) => {
 };
 
 export default PdfViewer;
-
-
 
 
 
