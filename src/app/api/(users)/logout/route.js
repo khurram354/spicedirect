@@ -7,7 +7,6 @@ export async function GET(request) {
         success:true,
         message: "logout successfully"
        });
-       console.log(response)
        response.cookies.set("sdwtkn", '', {
         httpOnly: true,
         expires: new Date(0),

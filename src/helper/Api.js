@@ -68,6 +68,7 @@ const checkseqnumber = async (rbody) => {return await fetchData(`/api/get_existi
 const checksubseqnumber = async (rbody) => {return await fetchData(`/api/get_existing_subcate_seq`, 'POST', rbody);}
 const getallusers = async (rbody) => {return await fetchData(`/api/allcustomers`,'POST', rbody)};
 const checkcustomer = async (rbody) => {return await fetchData(`/api/check_customer`,'POST', rbody)};
+const resetpassword = async (rbody) => {return await fetchData(`/api/reset_password`,'POST', rbody)};
 
 const call_api = {
   getallcategories,
@@ -113,5 +114,6 @@ const call_api = {
   checksubseqnumber,
   getallusers,
   checkcustomer,
+  resetpassword,
 };
 export default call_api;

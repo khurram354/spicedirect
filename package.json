@@ -7,7 +7,8 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mobile": "next dev -H 0.0.0.0 -p 3000"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.832.0",
