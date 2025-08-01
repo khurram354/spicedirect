@@ -3,10 +3,35 @@ import InventoryProduct from "@/models/inventorySchema";
 import InventoryCategory from "@/models/categorySchema";
 import { NextResponse } from "next/server";
 import { handleError } from "@/utils/errorHandler";
+import { getMobileCustomerId } from "@/helper/getMobileCustomerId";
+import CustomerItemModel from "@/models/customerItemsSchema";
 
-const searchFunction = async(query = {}, start_index, end_index) => {
+
+const setCustomerSpecificPrices = async(customerId, resultData) => {
+    const customerSpecificProducts = await CustomerItemModel.find({customer:customerId});
+        const customerItemsMap = {};
+        if(customerSpecificProducts.length > 0){
+            for(const item of customerSpecificProducts[0].items){
+                customerItemsMap[item._id.toString()] = item.rate
+            }
+        };
+        const updateProductPriceData = resultData.map((product) => {
+            const customRate = customerItemsMap[product._id.toString()];
+            if(customRate !== undefined){
+                return {
+                    ...product.toObject(),
+                    default_sale_price: customRate
+                }
+            }
+            return product
+        });
+        return updateProductPriceData;
+}
+
+const searchFunction = async(query = {}, start_index, end_index, customerId) => {
     try { 
-        const result = await InventoryProduct.find({...query, active:true}).populate('category').populate('subcategory').populate('subsubcategory').populate('vat').sort({ name: 1 });
+        const resultData = await InventoryProduct.find({...query, active:true}).populate('category').populate('subcategory').populate('subsubcategory').populate('vat').sort({ name: 1 });       
+        const result = await setCustomerSpecificPrices(customerId, resultData);
         const totalPages = Math.ceil(result.length/40);
         let resp = []
         if(query.subcategory){
@@ -37,6 +62,7 @@ export async function POST(request) {
         const limit = 40;
         const start_index = (page - 1) * limit;
         const end_index = start_index + limit;
+        const customerId = getMobileCustomerId(request);
         await dbConnect();
 
         let query = {};
@@ -44,17 +70,18 @@ export async function POST(request) {
             if (searchText) {
                 query.category = { $in: checked };
                 query.name = { $regex: searchText, $options: 'i' };
-                const result = await searchFunction(query, start_index, end_index);
+                const result = await searchFunction(query, start_index, end_index, customerId);
                 return NextResponse.json(result);
             } else {
                 query.category = { $in: checked }
-                const result = await searchFunction(query, start_index, end_index);
+                const result = await searchFunction(query, start_index, end_index, customerId);
                 return NextResponse.json(result)
             }
         } else {
             if (searchText) {
                 query = { name: { $regex: searchText, $options: 'i' },active:true }
-                const resp = await InventoryProduct.find(query).populate('category').populate('vat');
+                const resultData = await InventoryProduct.find(query).populate('category').populate('vat');
+                const resp = await setCustomerSpecificPrices(customerId, resultData);
                 const productData = resp.slice(start_index, end_index);
                 const hasMore = end_index < resp.length;
                 return NextResponse.json({
@@ -64,22 +91,22 @@ export async function POST(request) {
                 });
             } else if(cuisineId){
                 query.cuisine = { $regex: new RegExp(cuisineId, 'i') };
-                const result = await searchFunction(query, start_index, end_index);
+                const result = await searchFunction(query, start_index, end_index, customerId);
                 return NextResponse.json(result);
             } else if(offersId){
                 query.special_categories = { $regex: new RegExp(offersId, 'i') };
-                const result = await searchFunction(query, start_index, end_index);
+                const result = await searchFunction(query, start_index, end_index, customerId);
                 return NextResponse.json(result)
             } else if(subcateId){
                 query.subcategory = subcateId;
-                const result = await searchFunction(query, start_index, end_index);
+                const result = await searchFunction(query, start_index, end_index, customerId);
                 return NextResponse.json(result)
             } else if(subsubcateId){
                 query.subsubcategory = subsubcateId;
-                const result = await searchFunction(query, start_index, end_index);
+                const result = await searchFunction(query, start_index, end_index, customerId);
                 return NextResponse.json(result)
             } else {
-                const result = await searchFunction(query, start_index, end_index);
+                const result = await searchFunction(query, start_index, end_index, customerId);
                 return NextResponse.json(result)
             }
        };

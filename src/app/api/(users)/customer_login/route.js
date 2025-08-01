@@ -15,8 +15,11 @@ export async function POST(request) {
         const matchPassword = await bcrypt.compare(password, customer.password);
         if (!matchPassword) { return handleError(null, "Invalid email or password") };
         const tokenData = { id: customer._id, email: customer.email };
+        const plainCustomer = customer.toObject();
+        const deliverydays = plainCustomer.zones.map((zone,index)=>zone!=null?index:null).filter(index=>index!=null);
+        const userId = customer._id;
         const LoginToken = jwt.sign(tokenData, process.env.JWT_SECRET, { expiresIn: '30d' });
-        return handleSuccess(LoginToken, "token", "login successfully");
+        return handleSuccess({LoginToken, deliverydays, userId}, "token", "login successfully");
     } catch (error) {
         return handleError(null, "network error");
     }

@@ -8,7 +8,7 @@ const customerSchema = new mongoose.Schema({
     mobile: {type:Number, trim: true},
     city: {type:String, trim: true},
     status: {type: Boolean, default: false},
-    order_taking_days:{type: [Number], required: true, default: [], enum: [0, 1, 2, 3, 4, 5, 6], index: true},
+    zones:{type: [mongoose.Schema.Types.ObjectId], default: []},
 },{
     collection: 'customers',
     versionKey:false,

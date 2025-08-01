@@ -19,7 +19,10 @@ export async function POST(request) {
         await CustomerModel.findByIdAndUpdate(customerId,{ password: hashPassword, status:true });
         const tokenData = {id:customer._id, email:customer.email}
         const LoginToken = jwt.sign(tokenData,process.env.JWT_SECRET, {expiresIn: '30d'});
-        return handleSuccess(LoginToken, "token", "Password reset successfully");
+        const plainCustomer = customer.toObject();
+        const deliverydays = plainCustomer.zones.map((zone,index)=>zone!=null?index:null).filter(index=>index!=null);
+        const userId = customer._id;
+        return handleSuccess({LoginToken, deliverydays, userId}, "token", "Password reset successfully");
     } catch (jwtError) {
       if (jwtError.name === 'TokenExpiredError') {
         return handleError(null, "Reset link has expired. Please request a new one.");
