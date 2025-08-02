@@ -18,7 +18,8 @@ const ordersSchema = new mongoose.Schema({
     total_no_vat: { type: Number},
     vat_total: { type: Number},
     total_incl_vat: { type: Number},
-    profit: {type: Number}
+    profit: {type: Number},
+    order_number: {type: String, trim:true}
 }, {
     collection: "orders",
     versionKey: false,

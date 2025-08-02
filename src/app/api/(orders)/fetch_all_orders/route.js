@@ -16,9 +16,6 @@ export async function GET(request) {
         }else{
             orders = await OrdersModel.find({}).sort({_id: 1});
         }
-        
-       
-        // if(!resp){return handleError(null, "network error")}
-        return handleSuccess(orders, "orders", "order created successfully")
+        return handleSuccess(orders, "orders", "orders fetched successfully")
     } catch (error) {return handleError(error)}
 }
