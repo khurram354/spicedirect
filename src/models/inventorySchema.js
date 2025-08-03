@@ -4,7 +4,7 @@ import SubCategoryModel from "./subcategorySchema";
 import SubSubCategoryModel from "./subsubcategorySchema";
 import VAT from "./vatSchema";
 const inventorySchema = new mongoose.Schema({
-    name:       {type: String, required: true, trim: true, unique: true},
+    name:       {type: String, required: true, trim: true},
     active:     {type: Boolean, required: true, default: true, index: true,
         validate: {validator: (value) => [false, true].includes(value)}},
 
@@ -20,7 +20,11 @@ const inventorySchema = new mongoose.Schema({
     alert_quantity:     {type: Number, required: true, default: 0},
     weight_grams:       {type: Number, required: false, default: 0, min: 0},
     weight_kg:          {type: Number, required: false, default: 0, min: 0},
+    cost_price: {type: Number, required: true},
+    min_sale_price: {type: Number, required: true},
     default_sale_price: {type: Number, required: true},
+    collection_price: {type: Number, required: true},
+    barcode:{type:Number},
     cate_sequence_no:   {type: Number, trim:true},
     subcate_sequence_no:   {type: Number, trim:true},
     item_image:         {type: String},

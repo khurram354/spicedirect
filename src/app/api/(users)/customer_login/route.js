@@ -12,6 +12,7 @@ export async function POST(request) {
         await dbConnect();
         const customer = await CustomerModel.findOne({ email }).select("+password");
         if (!customer) { return handleError(null, "Invalid email or password") }
+        if(!customer.active){return handleError(null, 'customer account closed')}
         const matchPassword = await bcrypt.compare(password, customer.password);
         if (!matchPassword) { return handleError(null, "Invalid email or password") };
         const tokenData = { id: customer._id, email: customer.email };

@@ -106,7 +106,7 @@ const AllCustomer = () => {
                     <td className="px-1 py-3 text-sm w-24 text-center">{ele.city}</td>
                     <td className="px-1 py-3 text-sm w-28 text-center">{ele.mobile}</td>
                     <td className="px-1 py-3 text-sm w-40 text-center">{ele.email}</td>
-                    <td className="px-1 py-3 text-sm w-40 text-center">{ele.status === true ? "active":"block"}</td>                    
+                    <td className="px-1 py-3 text-sm w-40 text-center">{ele.status === true ? "active":"close"}</td>                    
                     <td className="px-1 py-3 text-sm w-32 text-center"><button className='bg-secondary p-2 text-white border-2 rounded-md' onClick= {()=>handleGenLink(ele._id)}>Send Link</button></td>                    
                   </tr>
                 </tbody>

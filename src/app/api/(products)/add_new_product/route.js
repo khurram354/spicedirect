@@ -1,0 +1,24 @@
+import dbConnect from "@/lib/db";
+import InventoryProduct from "@/models/inventorySchema";
+import { handleError } from "@/utils/errorHandler";
+import { handleSuccess } from "@/utils/handleSuccess";
+import mongoose from "mongoose";
+
+export async function POST(request) {
+    try {
+        let productData = await request.json(request.body);
+        let { _id } = productData;
+        if (!mongoose.Types.ObjectId.isValid(_id)) { return handleError(null, "invalid product Id") }
+        await dbConnect();
+        const proudctExist = await InventoryProduct.findById(_id);       
+        ['supplier1', 'supplier2', 'supplier3'].forEach(key => delete productData[key]);
+        if (proudctExist) {
+            await InventoryProduct.findByIdAndUpdate(_id, productData, { new: true })
+        } else {
+            const id = new mongoose.Types.ObjectId(_id);
+            customerInput._id = id;
+            const resp = await InventoryProduct.create(productData);
+        }
+        return handleSuccess(null, "product", "Product Added/updated successfully")
+    } catch (error) { return handleError(error) }
+}
