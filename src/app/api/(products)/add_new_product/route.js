@@ -16,8 +16,8 @@ export async function POST(request) {
             await InventoryProduct.findByIdAndUpdate(_id, productData, { new: true })
         } else {
             const id = new mongoose.Types.ObjectId(_id);
-            customerInput._id = id;
-            const resp = await InventoryProduct.create(productData);
+            productData._id = id;
+            await InventoryProduct.create(productData);
         }
         return handleSuccess(null, "product", "Product Added/updated successfully")
     } catch (error) { return handleError(error) }
