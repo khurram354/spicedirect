@@ -11,7 +11,7 @@ export async function POST(request) {
         if (!mongoose.Types.ObjectId.isValid(_id)) { return handleError(null, "invalid product Id") }
         await dbConnect();
         const proudctExist = await InventoryProduct.findById(_id);       
-        ['supplier1', 'supplier2', 'supplier3'].forEach(key => delete productData[key]);
+        ['supplier1', 'supplier2', 'supplier3','item_image'].forEach(key => delete productData[key]);
         if (proudctExist) {
             await InventoryProduct.findByIdAndUpdate(_id, productData, { new: true })
         } else {
