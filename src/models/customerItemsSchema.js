@@ -3,7 +3,9 @@ import CustomerModel from "./customerSchema";
 
 const customerItemSchema = new mongoose.Schema({
     customer: {type:mongoose.Schema.Types.ObjectId, ref: 'customers', index:true },
-    items: [{rate:{type:Number}}]
+    items: [{
+        _id: { type: mongoose.Schema.Types.ObjectId },
+        rate:{type:Number}}]
 },
     {
         collection:"customerItems",
