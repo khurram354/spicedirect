@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 
 export async function POST(request) {
     try {
-        const {id, price} = await request.json(request);   
+        const {id, price} = await request.json();   
         if(!id || !price){return handleError(null, "missing required fields")}        
         await dbConnect();
         const resp = await CustomerItemModel.updateMany(
