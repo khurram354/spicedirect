@@ -3,9 +3,11 @@ import CustomerItemModel from "@/models/customerItemsSchema";
 import { handleError } from "@/utils/errorHandler";
 import { handleSuccess } from "@/utils/handleSuccess";
 import mongoose from "mongoose";
+import { verifyBearerToken } from "@/utils/ermauthmiddleware";
 
 export async function DELETE(request) {
     try {
+        verifyBearerToken(request);
         const {id} = await request.json();   
         if(!id){return handleError(null, "missing required fields")}        
         await dbConnect();

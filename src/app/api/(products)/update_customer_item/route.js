@@ -3,9 +3,11 @@ import CustomerItemModel from "@/models/customerItemsSchema";
 import { handleError } from "@/utils/errorHandler";
 import { handleSuccess } from "@/utils/handleSuccess";
 import mongoose from "mongoose";
+import { verifyBearerToken } from "@/utils/ermauthmiddleware";
 
 export async function POST(request) {
     try {
+        verifyBearerToken(request)
         const {id, price} = await request.json();   
         if(!id || !price){return handleError(null, "missing required fields")}        
         await dbConnect();
