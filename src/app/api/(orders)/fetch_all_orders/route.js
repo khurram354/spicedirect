@@ -3,9 +3,11 @@ import OrdersModel from "@/models/ordersSchema";
 import { handleError } from "@/utils/errorHandler";
 import { handleSuccess } from "@/utils/handleSuccess";
 import mongoose from "mongoose";
+import { verifyBearerToken } from "@/utils/ermauthmiddleware";
 
 export async function GET(request) {
     try { 
+        verifyBearerToken(request)
         const { searchParams } = new URL(request.url);
         const id = searchParams.get("id");
         await dbConnect();
