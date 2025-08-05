@@ -3,9 +3,11 @@ import CustomerModel from "@/models/customerSchema";
 import { handleError } from "@/utils/errorHandler";
 import { handleSuccess } from "@/utils/handleSuccess";
 import mongoose from "mongoose";
+import { verifyBearerToken } from "@/utils/ermauthmiddleware";
 
 export async function POST(request) {
     try {
+        verifyBearerToken(request)
         let customerInput = await request.json(request.body);
         let { _id } = customerInput;
         if (!mongoose.Types.ObjectId.isValid(_id)) { return handleError(null, "invalid custome Id") }
