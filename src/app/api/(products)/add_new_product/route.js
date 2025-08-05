@@ -3,9 +3,11 @@ import InventoryProduct from "@/models/inventorySchema";
 import { handleError } from "@/utils/errorHandler";
 import { handleSuccess } from "@/utils/handleSuccess";
 import mongoose from "mongoose";
+import { verifyBearerToken } from "@/utils/ermauthmiddleware";
 
 export async function POST(request) {
     try {
+        verifyBearerToken(request);
         let productData = await request.json(request.body);
         let { _id } = productData;
         if (!mongoose.Types.ObjectId.isValid(_id)) { return handleError(null, "invalid product Id") }
