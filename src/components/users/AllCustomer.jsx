@@ -12,6 +12,7 @@ const AllCustomer = () => {
   const [hasMore, setHasMore] = useState(true);
   const [searchText, setSearchText] = useState(""); 
   const [checkChanges, setCheckChanges] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   async function getAllUsers() {
     try {
@@ -66,11 +67,14 @@ const AllCustomer = () => {
 
   const handleGenLink = async(id) => {
     try {
+      setLoading(true);
       const rbody = {id}
       const resp = await call_api.checkcustomer(rbody);
-      console.log(resp)
+      if(resp.success){alert(resp.message)
+      }else{alert("message not sent, network error")}
+    setLoading(false)
     } catch (error) {
-      console.log("network error", error)
+      console.log("network error", error); setLoading(false);
     }
   }
 
@@ -107,7 +111,7 @@ const AllCustomer = () => {
                     <td className="px-1 py-3 text-sm w-28 text-center">{ele.mobile}</td>
                     <td className="px-1 py-3 text-sm w-40 text-center">{ele.email}</td>
                     <td className="px-1 py-3 text-sm w-40 text-center">{ele.status === true ? "active":"close"}</td>                    
-                    <td className="px-1 py-3 text-sm w-32 text-center"><button className='bg-secondary p-2 text-white border-2 rounded-md' onClick= {()=>handleGenLink(ele._id)}>Send Link</button></td>                    
+                    <td className="px-1 py-3 text-sm w-32 text-center"><button className='bg-secondary p-2 text-white border-2 rounded-md' onClick= {()=>handleGenLink(ele._id)} disabled={loading}>{loading? "Sending Email":"Send Password"}</button></td>                    
                   </tr>
                 </tbody>
               })}
