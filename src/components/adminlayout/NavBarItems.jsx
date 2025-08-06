@@ -65,6 +65,11 @@ export const NavBarItems = [
                 name: 'Update Supplier Logo',
                 link: '/admin/editsupplier'
             },
+            {
+                id: '204',
+                name: 'Update App Category Banner',
+                link: '/admin/editappcategory'
+            },
 		]
 	},{
         id: "5",

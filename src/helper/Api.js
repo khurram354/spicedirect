@@ -69,6 +69,7 @@ const checksubseqnumber = async (rbody) => {return await fetchData(`/api/get_exi
 const getallusers = async (rbody) => {return await fetchData(`/api/allcustomers`,'POST', rbody)};
 const checkcustomer = async (rbody) => {return await fetchData(`/api/check_customer`,'POST', rbody)};
 const resetpassword = async (rbody) => {return await fetchData(`/api/reset_password`,'POST', rbody)};
+const uploadappcategoryimages = async (formData) => {return await fetchData(`/api/upload_appcate_image`, 'POST', formData);}
 
 const call_api = {
   getallcategories,
@@ -115,5 +116,6 @@ const call_api = {
   getallusers,
   checkcustomer,
   resetpassword,
+  uploadappcategoryimages,
 };
 export default call_api;

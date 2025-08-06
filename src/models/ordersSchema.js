@@ -19,7 +19,8 @@ const ordersSchema = new mongoose.Schema({
     vat_total: { type: Number},
     total_incl_vat: { type: Number},
     profit: {type: Number},
-    order_number: {type: String, trim:true}
+    order_number: {type: String, trim:true},
+    order_status: {type: String, default: "confirmed"}
 }, {
     collection: "orders",
     versionKey: false,
