@@ -1,6 +1,5 @@
 'use client';
 import { TbEdit } from "react-icons/tb";
-import Link from 'next/link';
 import { useState } from "react";
 import Image from "next/image";
 import call_api from "@/helper/Api";
@@ -9,7 +8,7 @@ const EditCategoryInApp = ({allcategories}) => {
     const [categorydata, setCategorydata] = useState(allcategories || []); 
 
     const fetchCategories = async () => {
-      const response = await call_api.getallcategories();
+      const response = await call_api.getmaincategories();
       return setCategorydata(response.categories);
     }
     const handleFileUpload = async(e,categoryid) => {

@@ -70,7 +70,7 @@ const getallusers = async (rbody) => {return await fetchData(`/api/allcustomers`
 const checkcustomer = async (rbody) => {return await fetchData(`/api/check_customer`,'POST', rbody)};
 const resetpassword = async (rbody) => {return await fetchData(`/api/reset_password`,'POST', rbody)};
 const uploadappcategoryimages = async (formData) => {return await fetchData(`/api/upload_appcate_image`, 'POST', formData);}
-
+const getmaincategories = async () =>{return await fetchData(`/api/get_allcategories`);};
 const call_api = {
   getallcategories,
   getallproducts,
@@ -117,5 +117,6 @@ const call_api = {
   checkcustomer,
   resetpassword,
   uploadappcategoryimages,
+  getmaincategories,
 };
 export default call_api;
