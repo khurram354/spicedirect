@@ -12,7 +12,7 @@ export async function GET(request) {
         await dbConnect();
         if (!mongoose.Types.ObjectId.isValid(customerId)) { return handleError(null, "invalid customer") }
         let orders = await OrdersModel.find({customer: customerId}, {invoice_date:1, ot_date:1, order_number:1, 
-total_incl_vat:1});
+total_incl_vat:1, order_status:1});
         return handleSuccess(orders, "orders", "orders fetched successfully")
     } catch (error) { return handleError(error) }
 }
