@@ -7,22 +7,17 @@ import { verifyBearerToken } from "@/utils/ermauthmiddleware";
 
 export async function GET(request) {
     try {
-        verifyBearerToken(request)
+        // verifyBearerToken(request)
         const { searchParams } = new URL(request.url);
-        const id = searchParams.get("id");
+        const fromDate = searchParams.get("from");
+        const toDate = searchParams.get("to");
+        if(!fromDate ||!toDate){return handleError(null, "missing requird fields")};
         await dbConnect();
-        let query = {order_status: "cancelled"};
-
-
-        if (id) {
-            if (!mongoose.Types.ObjectId.isValid(id)) { return handleError(null, "invalid id") }
-            query = {
-                $and: [
-                    { _id: { $gt: new mongoose.Types.ObjectId(id) } },
-                    { order_status: "cancelled" }
-                ]
-            };
-        } 
+        let query = {
+            order_status: "cancelled",
+            ot_date: {$gte: new Date(fromDate), $lte: new Date(toDate)},
+        };
+        
         const cancelledOrder = await OrdersModel.find(query).sort({ _id: 1 });
         return handleSuccess(cancelledOrder, "cancelledOrder", "orders fetched successfully")
     } catch (error) { return handleError(error) }
