@@ -23,7 +23,7 @@ const inventorySchema = new mongoose.Schema({
     cost_price: {type: Number, required: true},
     min_sale_price: {type: Number, required: true},
     default_sale_price: {type: Number, required: true},
-    collection_price: {type: Number, required: true},
+    collection_price: {type: Number},
     barcode:{type:Number},
     cate_sequence_no:   {type: Number, trim:true},
     subcate_sequence_no:   {type: Number, trim:true},
