@@ -11,19 +11,15 @@ export async function GET(request) {
         if (!customerId) { return handleError(null, "customer does not exist") }
         await dbConnect();
         if (!mongoose.Types.ObjectId.isValid(customerId)) { return handleError(null, "invalid customer") }
-        let orders = await OrdersModel.aggregate([
-            { $match: { customer: mongoose.Types.ObjectId(customerId) } },
-            {
-                $project: {
-                    invoice_date: 1,
-                    ot_date: 1,
-                    order_number: 1,
-                    total_incl_vat: 1,
-                    order_status: 1,
-                    itemsLength: { $size: "$items" }
-                }
+        let orders = await OrdersModel.find({ customer: customerId }, { invoice_date: 1, ot_date: 1, order_number: 1, total_incl_vat: 1, order_status: 1, items: 1 });
+        orders = orders.map(order => {
+            const obj = order.toObject();
+            return {
+                ...obj,
+                itemsLength: obj.items.length,
+                items: undefined,
             }
-        ]);
+        });
         return handleSuccess(orders, "orders", "orders fetched successfully")
     } catch (error) { return handleError(error) }
 }
