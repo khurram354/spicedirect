@@ -44,7 +44,7 @@ const getallterms = async() => {return await fetchData(`${frontEndURL}/api/get_t
 const getallproducts = async (rbody) => {return await fetchData(`/api/get_allproducts`,'POST', rbody)};
 const createblog = async (rbody) => {return await fetchData(`${frontEndURL}/api/create_new_blog`, 'POST', rbody);}
 const updatecuisine = async (rbody) => {return await fetchData(`/api/add_product_cuisine`, 'POST', rbody);}
-const updatespcategory = async (rbody) => {return await fetchData(`/api/add_special_categories`,'POST', rbody);}
+const updatespcategory = async (rbody) => {return await fetchData(`${frontEndURL}/api/add_special_categories`,'POST', rbody);}
 const sendemail = async (rbody) => {return await fetchData(`/api/send_email`, 'POST', rbody);}
 const addtofavourite = async (rbody) => {return await fetchData(`/api/add_favourite`, 'POST', rbody);}
 const uploadproductimages = async (productId,formData) => {return await fetchData(`/api/upload_product_image/${productId}`, 'POST', formData);}
