@@ -11,7 +11,7 @@ export async function GET(request) {
         if (!customerId) { return handleError(null, "customer does not exist") }
         await dbConnect();
         if (!mongoose.Types.ObjectId.isValid(customerId)) { return handleError(null, "invalid customer") }
-        let orders = await OrdersModel.find({ customer: customerId }, { invoice_date: 1, ot_date: 1, order_number: 1, total_incl_vat: 1, order_status: 1, items: 1 });
+        let orders = await OrdersModel.find({ customer: customerId }, { invoice_date: 1, ot_date: 1, order_number: 1, total_incl_vat: 1, order_status: 1, items: 1 }).sort({_id:-1});
         orders = orders.map(order => {
             const obj = order.toObject();
             return {
