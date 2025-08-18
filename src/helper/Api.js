@@ -121,3 +121,16 @@ const call_api = {
   getmaincategories,
 };
 export default call_api;
+
+
+// App api route for ref
+// /api/get_allcategories
+// /api/get_allproducts
+// /api/get_customer_specific_products
+// /api/reset_password
+// /api/customer_login
+// /api/create_order
+// /api/customer_profile
+// /api/fetch_my_orders
+// /api/order_detail?orderid=${orderId}
+// /api/cancel_order?id=${orderId}

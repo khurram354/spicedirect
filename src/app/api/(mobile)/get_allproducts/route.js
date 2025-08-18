@@ -62,7 +62,7 @@ export async function POST(request) {
         const limit = 40;
         const start_index = (page - 1) * limit;
         const end_index = start_index + limit;
-        const customerId = getMobileCustomerId(request);
+        const customerId = await getMobileCustomerId(request);
         await dbConnect();
 
         let query = {};
