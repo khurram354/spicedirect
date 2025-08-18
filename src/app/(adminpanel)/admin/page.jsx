@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import Login from '@/components/users/Login';
 import TokenHandler from '@/utils/tokenHandler';
 import { redirect } from 'next/navigation';
