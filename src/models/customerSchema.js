@@ -9,6 +9,7 @@ const customerSchema = new mongoose.Schema({
     city: {type:String, trim: true},
     status: {type: Boolean, default: false},
     zones:{type: [mongoose.Schema.Types.ObjectId], default: []},
+    fcmtoken:{type:String},
 },{
     collection: 'customers',
     versionKey:false,
