@@ -3,7 +3,6 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 import StoreProvider from "./StoreProvider";
 import Script from "next/script";
-import { startCronJobs } from "@/lib/crobjob";
 
 export const metadata = {
   title: "Spice Direct WholeSale",
@@ -44,7 +43,7 @@ export const metadata = {
     shortcut: [{ url: "/site.webmanifest", type: "application/manifest+json" }]
   }
 };
-startCronJobs();
+
 export default function RootLayout({ children }) {
   const structuredData = {
     "@context": "https://schema.org",
