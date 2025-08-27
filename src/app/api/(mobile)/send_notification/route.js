@@ -13,14 +13,22 @@ export async function GET(request) {
         for (const customer of activeCustomers) {
             const message = {
                 token: customer.fcmtoken,
-                notification: {
+                data: {
                     title: "Order Reminder 📦",
                     body: `Spice Direct Wholesale, today is your order day! Place your order now.`,
+                },
+                notification: {
+                    title: "Order Reminder 📦",
+                    body: "Spice Direct Wholesale, today is your order day! Place your order now."
+                },
+                android: {
+                    priority: "high",
+                    ttl: 3600 * 1000,
                 },
             };
             await admin.messaging().send(message);
         }
-        return handleSuccess(null, "token", "fcmtoken added/updatd successfully");
+        return handleSuccess(null, "token", "send notifications successfully");
     } catch (error) {
         return handleError(null, "network error");
     }
