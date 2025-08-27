@@ -12,14 +12,14 @@ const ContactForm = () => {
     const [msg, setMsg] = useState("");
     const [errmsg, setErrmsg] = useState("");
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState({fName:'', lName:'',pNumber:'', email:'',message:''});
+    const [error, setError] = useState({ fName: '', lName: '', pNumber: '', email: '', message: '' });
 
     const validate = (field, value) => {
         switch (field) {
             case 'fName':
                 return value.trim() === '' ? "Please Enter First Name" : '';
             case 'lName':
-                return value.trim() === '' ? "Please Enter Last Name": "";
+                return value.trim() === '' ? "Please Enter Last Name" : "";
             case 'pNumber':
                 return value.trim() === '' ? "Please Enter Phone Number" : '';
             case 'email':
@@ -28,7 +28,7 @@ const ContactForm = () => {
                 } else {
                     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
                     return emailRegex.test(value) ? '' : 'Please Enter a Valid Email Address';
-                } 
+                }
             case 'message':
                 return value.trim() === "" ? "Please Enter your Query" : "";
             default:
@@ -36,27 +36,27 @@ const ContactForm = () => {
         }
     }
     const checkFormError = () => {
-        const fields ={fName, lName, pNumber, email, message};
+        const fields = { fName, lName, pNumber, email, message };
         let hasError = false;
         const newErrors = {};
-        Object.keys(fields).forEach((field)=>{
+        Object.keys(fields).forEach((field) => {
             const errorMessage = validate(field, fields[field]);
             newErrors[field] = errorMessage;
-            if(errorMessage) hasError = true;
+            if (errorMessage) hasError = true;
         });
         setError(newErrors);
         return !hasError;
     }
-    const sendEmailHandler = async() => {
+    const sendEmailHandler = async () => {
         setLoading(true)
         const checkError = checkFormError();
-        if(!checkError) {setLoading(false); setMsg(""); return;};
-        const rbody = ({fName, lName, pNumber, email, message});
+        if (!checkError) { setLoading(false); setMsg(""); return; };
+        const rbody = ({ fName, lName, pNumber, email, message });
         const resp = await call_api.sendemail(rbody);
-        if(resp.success){
+        if (resp.success) {
             setFName(""); setLName(""); setPNumber(""); setEmail(""); setMessage(""); setErrmsg("");
             setMsg("Your Email sent successfully, We will soon contact You!");
-        }else{
+        } else {
             setMsg("");
             setErrmsg("Network Error, Please try again")
         }
@@ -67,10 +67,13 @@ const ContactForm = () => {
             <div className="md:flex md:flex-row md:justify-between sm:flex sm:flex-col-reverse">
                 <div className="md:w-3/6 sm:w-full sm:my-6 md:my-0">
                     <h4 className="font-bold text-xl text-secondary">
-                        Contact us with Questions about To Orders, Delivery and Prices
+                        Contact us with Questions about Account, Orders, Delivery and Prices
                     </h4>
                     <p className="text-sm text-gray-600 pt-2">
                         Please let us know, how can we help by sending us a quick e-email, We will respond promptly. Thank You!.
+                    </p>
+                    <p className="text-sm text-gray-600 pt-2 font-medium">
+                        To request deletion of your account and all associated data, please contact us using this form.
                     </p>
                     <div className="mt-10">
                         <div className="flex justify-between mt-6">
@@ -134,9 +137,9 @@ const ContactForm = () => {
                             <span className="text-red-600 text-xs pt-1">{error && error.message}</span>
                         </div>
                         <div className="pt-6">
-                        <div className="text-red-600 text-sm font-medium">{errmsg && errmsg}</div>
-                        <div className="text-green-600 text-sm font-medium">{msg && msg}</div>
-                            <button className="bg-secondary w-full p-2 text-lg font-semibold shadow-lg rounded-sm text-white hover:text-secondary hover:bg-white border border-secondary" onClick={sendEmailHandler} disabled = {loading}>{loading ? "Sending ..." : "Send Email"}</button>
+                            <div className="text-red-600 text-sm font-medium">{errmsg && errmsg}</div>
+                            <div className="text-green-600 text-sm font-medium">{msg && msg}</div>
+                            <button className="bg-secondary w-full p-2 text-lg font-semibold shadow-lg rounded-sm text-white hover:text-secondary hover:bg-white border border-secondary" onClick={sendEmailHandler} disabled={loading}>{loading ? "Sending ..." : "Send Email"}</button>
                         </div>
                     </div>
                 </div>
