@@ -60,9 +60,9 @@ const EditProductImageCom = ({ type }) => {
     }
     return (
         <>
-            <div className="w-3/4 relative left-72 sm:px-2 md:px-2 mt-8 shadow rounded-md ">
+            <div className="max-w-7xl relative sm:px-2 md:px-2 mt-8 shadow rounded-md ">
             </div>
-            <div className="w-3/4 relative left-72 sm:px-2 md:px-2 sm:py-8 mt-8 h-screen ">
+            <div className="max-w-7xl relative sm:px-2 md:px-2 sm:py-8 mt-8 h-screen ">
                 <main className=" mx-auto ">
                     <article className="relative flex flex-col bg-slate-50 shadow rounded-md">
                         <div className="w-full h-full absolute top-0 left-0 pointer-events-none z-50 flex flex-col items-center justify-center rounded-md">

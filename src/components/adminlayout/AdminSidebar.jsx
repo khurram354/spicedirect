@@ -7,9 +7,11 @@ import Image from 'next/image';
 import { NavBarItems } from './NavBarItems';
 import call_api from '@/helper/Api';
 import { redirect } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 const AdminSidebar = () => {
     const [itemsIds, setItemsIds] = useState([]);
+    const isOpen = useSelector((state)=>state.sidebar.isOpen);
 
     const menuHandler = (id) => {
         setItemsIds((previds) => {
@@ -29,15 +31,15 @@ const AdminSidebar = () => {
     }
     return (
         <Fragment>
-            <div className="fixed flex flex-col top-1 left-0 w-14 hover:w-64 sm:w-64 xs:w-64 bg-primary h-full text-white transition-all duration-300 border-none z-10 sidebar rounded-md">
+            <div className={`${isOpen? "w-64" : "w-0"} flex flex-col h-full text-white`}>
                 <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
                     <ul className="flex flex-col py-4 space-y-1">
                         <li className="px-5 md:block ">
                             <Link href={`/`}>
                                 <Image
                                     src="/logo/spicedirect_logo.png"
-                                    width={500}
-                                    height={500}
+                                    width={200}
+                                    height={200}
                                     alt="Picture of the author"
                                 />
                             </Link>

@@ -14,18 +14,42 @@ export async function POST(request) {
         const start_index = (page - 1) * limit;
         const end_index = start_index + limit;
         await dbConnect();
-        let query = {};
+        let query = {active: true};
 
-        query = { customer_name: { $regex: searchText, $options: 'i' }, active:true }
-        const resp = await CustomerModel.find(query);
-        const totalPages = Math.ceil(resp.length/40);
-        const customersData = resp.slice(start_index, end_index);
-        const hasMore = end_index < resp.length;
+        if(searchText){
+            query={
+                ...query,
+                $or:[
+                    {customer_name: {$regex:searchText, $options:'i'}},
+                    {email: {$regex: searchText, $options:'i'}},
+                    {mobile: {$regex: searchText, $options: 'i'}}
+                ]
+            };
+        }
+        const statsPipeline = [
+            {$facet: {
+                totalCustomers:[{$count: 'count'}],
+                activeCustomers:[{$match: {active:true}},{$count:'count'}],
+                inactiveCustomers:[{$match: {active:false}},{$count:"count"}]
+            }}
+        ]
+        const statsResult = await CustomerModel.aggregate(statsPipeline);
+        const [customersData, totalCount] = await Promise.all([
+            CustomerModel.find(query).skip(start_index).limit(limit),
+            CustomerModel.countDocuments(query)
+        ])
+        const totalPages = Math.ceil(totalCount/limit);
+        const hasMore = (page*limit) < totalCount;
         const customers = {
             success: true,
             data: customersData,
             hasMore: hasMore,
-            totalPages: totalPages
+            totalPages: totalPages,
+            stats: {
+                total: statsResult[0]?.totalCustomers[0]?.count || 0,
+                active: statsResult[0]?.activeCustomers[0]?.count || 0,
+                inactive: statsResult[0]?.inactiveCustomers[0]?.count || 0
+            }
         }
         return NextResponse.json(customers)
     } catch (error) { return handleError(error); }

@@ -46,7 +46,7 @@ const CreateSubCategory = ({ categories }) => {
     }, []);
     return (
         <section>
-            <div className="w-3/4 px-4 mx-auto mt-6 relative left-24 top-5">
+            <div className="max-w-7xl px-4 mx-auto mt-6 relative top-5">
                 <div className="w-full border border-gray-200 shadow-lg p-4">
                     <h4 className="text-center text-secondary font-semibold text-lg">Create New SubCategory</h4>
                     <div className="flex items-center pt-2">

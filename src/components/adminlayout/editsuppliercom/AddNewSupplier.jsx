@@ -56,7 +56,7 @@ const AddNewSupplier = () => {
     useEffect(() => { getallsupplier() }, [checkslider])
     return (
         <>
-            <div className="w-3/4 px-4 mx-auto mt-6 relative left-24 top-5">
+            <div className="max-w-7xl px-4 mx-auto mt-6 relative top-5">
                 <div className="overflow-hidden rounded-lg shadow-xs">
                     <div className="flex h-32 border-2 mb-4">
                         <div className="w-full flex justify-center items-center">{

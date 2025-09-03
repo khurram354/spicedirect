@@ -101,7 +101,7 @@ const ProductTable = () => {
 
   return (
     <>
-      <div className='w-3/4 px-4 mx-auto mt-3 relative left-24 top-5'>
+      <div className='max-w-7xl px-4 mx-auto mt-3 relative top-5'>
         <input type="text"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
@@ -110,7 +110,7 @@ const ProductTable = () => {
         />
         <FaSearch className="absolute lg:top-4 lg:right-32 text-gray-400 text-xl sm:top-5 md:right-20 sm:right-10" />
       </div>
-      <div className="w-3/4 px-4 mx-auto mt-6 relative left-24 top-5">
+      <div className="max-w-7xl px-4 mx-auto mt-6 relative top-5">
         <div className="overflow-hidden rounded-lg shadow-xs">
           <div className="w-full overflow-x-auto">
             <table className="w-full">

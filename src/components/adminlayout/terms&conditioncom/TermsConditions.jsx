@@ -57,7 +57,7 @@ const TermsConditions = ({ allTerms }) => {
 
     useEffect(() => { filterSelected() }, [selected])
     return (
-        <section className="w-3/4 px-4 mx-auto mt-6 relative left-24 top-5">
+        <section className="max-w-7xl px-4 mx-auto mt-6 relative top-5">
             <div className="bg-gray-100 p-2 shadow-md rounded-sm">
                 <div className="flex justify-around w-5/6 mx-auto items-center">
                     <div><h4 className="text-secondary font-medium">Select Terms & Condition Heading</h4></div>

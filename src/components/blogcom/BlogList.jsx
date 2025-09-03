@@ -6,7 +6,7 @@ import Image from "next/image";
 const BlogList = ({ blogList }) => {
     return (
         <>
-            <div className="w-3/4 px-4 mx-auto mt-6 relative left-24 top-5">
+            <div className="max-w-7xl px-4 mx-auto mt-6 relative top-5">
                 <div className="overflow-hidden rounded-lg shadow-xs">
                     <div className="w-full overflow-x-auto">
                         <table className="w-full">

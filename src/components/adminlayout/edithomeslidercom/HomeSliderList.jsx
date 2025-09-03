@@ -5,7 +5,7 @@ import Image from "next/image";
 const HomeSliderList = ({sliderImages, deleteSliderHandler}) => {
   return (
      <section>
-                    <div className="w-3/4 px-4 mx-auto mt-6 relative left-24 top-5">
+                    <div className="max-w-7xl px-4 mx-auto mt-6 relative top-5">
                         <table className="w-full overflow-x-auto">
                             <thead>
                                 <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">

@@ -306,7 +306,7 @@ const BlogTemplete = ({ type, blog, blogid }) => {
   useEffect(() => { getspOfferImage() }, [formData.spOfferImage]);
   useEffect(() => { getThumpsUPImage() }, [formData.thumpsUpImage]);
   return (
-    <div className="w-3/4 px-4 mx-auto mt-6 relative left-24 top-5">
+    <div className="max-w-7xl px-4 mx-auto mt-6 relative top-5">
       <div className="w-full border border-gray-200 shadow-lg p-4">
         <BlogTitleSection
           formData={formData}
