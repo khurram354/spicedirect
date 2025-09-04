@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.spicedirectwholesale",
+    "sha256_cert_fingerprints": [
+      "0C:6C:9F:B4:E1:8D:B6:52:B3:4A:E3:89:8A:3B:BB:46:B1:4F:E1:58:82:5D:37:11:27:C5:B2:B8:3E:B3:59:89"
+    ]
+  }
+}]
