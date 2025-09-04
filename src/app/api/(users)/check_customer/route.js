@@ -17,7 +17,7 @@ export async function POST(request) {
         const check_customer_email = await CustomerModel.find({ email: customer_email });
         if (check_customer_email.length > 1) { return handleError(null, "Please enter unique email address") };
         const reset_token = jwt.sign({ customerId: customer._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
-        const resetLink = `spicedirectwholesale://reset-password?token=${reset_token}`;
+        const resetLink = `https://www.spicedirectwholesale.co.uk/reset-password?token=${reset_token}`;
         const response = await sendPasswordLink(customer_email, resetLink);
         if (response.accepted.length > 0) {
             return handleSuccess(null, null, `Email sent successfully to: ${response.accepted[0]}`);
