@@ -43,8 +43,7 @@ const Login = () => {
         const rbody = { email, password }
         const res = await call_api.loginuser(rbody);
         if (res.success) {
-            redirect('/admin/dashboard');
-            console.log("user login successfully")
+            redirect('/admin/dashboard/order_management');
         } else {
             setMsg('login faild, network error')
             console.log("network error, cannot login user")

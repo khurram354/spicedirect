@@ -25,5 +25,9 @@ const ordersSchema = new mongoose.Schema({
     collection: "orders",
     versionKey: false,
 });
+ordersSchema.index({order_number: 1});
+ordersSchema.index({customer: 1});
+ordersSchema.index({invoice_date: 1});
+ordersSchema.index({order_status: 1});
 const OrdersModel = mongoose.models.orders || mongoose.model('orders', ordersSchema);
 export default OrdersModel;

@@ -9,7 +9,18 @@ export const NavBarItems = [
         id: "1",
 		name: "Dashboard",
 		icon: < IoHomeOutline/>,	
-		subItems: []
+		subItems: [
+            { 
+                id: "111",
+                name: "Order Management", 
+                link: '/admin/dashboard/order_management'
+            },
+            { 
+                id: "112",
+                name: "Customer Management", 
+                link: '/admin/dashboard/customer_management'
+            }
+        ]
 	},
 	{
         id: '2',

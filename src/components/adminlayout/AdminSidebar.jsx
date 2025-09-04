@@ -75,19 +75,6 @@ const AdminSidebar = () => {
                                 </li>
                             ))
                         }
-                        <li className="px-5 md:block">
-                            <div className="flex flex-row items-center mt-5 h-8">
-                                <div className="text-sm font-medium tracking-wide text-white uppercase border-b border-white-4">Settings</div>
-                            </div>
-                        </li>
-                        <li>
-                            <Link href="/admin/allcustomers" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-secondary text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-secondary pr-6">
-                                <span className="inline-flex justify-center items-center ml-4">
-                                    <LuUsers className="w-5 h-5" />
-                                </span>
-                                <span className="ml-2 text-sm tracking-wide truncate">All Cutomers</span>
-                            </Link>
-                        </li>
                         <li>
                             <div className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-secondary text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-secondary pr-6 cursor-pointer" onClick={logoutHandler}>
                                 <span className="inline-flex justify-center items-center ml-4">

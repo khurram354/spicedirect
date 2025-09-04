@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 async function page () {
   const token = await TokenHandler();
   if(token === "admin_account") {
-      redirect('/admin/dashboard');
+      redirect('/admin/dashboard/order_management');
     }
  
   return (

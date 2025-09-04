@@ -10,7 +10,7 @@ export async function POST(request) {
         if(token !== "admin_account"){return handleError(null, "Please login first to get details")}
         const { pageno, searchText } = await request.json();
         const page = pageno ? pageno : 1;
-        const limit = 40;
+        const limit = 20;
         const start_index = (page - 1) * limit;
         const end_index = start_index + limit;
         await dbConnect();

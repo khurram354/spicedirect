@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
 import { redirect } from "next/navigation";
 import TokenHandler from "@/utils/tokenHandler";
-import AllCustomer from "@/components/users/AllCustomer";
+import CustomerManagement from "@/components/adminlayout/dashboard/CustomerManagement";
 
 const page = async() => {
   const token = await TokenHandler();
@@ -11,7 +11,7 @@ const page = async() => {
   }
   return (
     <>
-      <AllCustomer/>
+      <CustomerManagement/>
     </>
   )
 }

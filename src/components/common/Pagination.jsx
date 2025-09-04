@@ -14,7 +14,7 @@ const Pagination = ({productdata, pageHandler, hasMore, pageno, totalPages}) => 
   }
   const pageNumbers = generatePages();
   return (
-    <div className={`${productdata ? 'block' : 'hidden'} mt-28`}>
+    <div className={`${productdata ? 'block' : 'hidden'} mt-14`}>
     <div className='text-warningcolor text-center'>
       <ul className="inline-flex -space-x-px text-sm">
         <button onClick={() => pageHandler(pageno - 1)} disabled = {pageno === 1}

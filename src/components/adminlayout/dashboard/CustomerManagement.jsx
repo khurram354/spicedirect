@@ -1,14 +1,14 @@
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from "react";
-import Pagination from "../common/Pagination";
+import Pagination from '@/components/common/Pagination';
 import call_api from "@/helper/Api";
 import { FaSearch, FaUser, FaUserCheck, FaUserTimes, FaEnvelope, FaCity, FaMobileAlt, FaSync, FaBars } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { useDispatch } from 'react-redux';
 import { toggleSidebar } from '@/lib/redux/features/sidebarSlice';
 
-const AllCustomer = () => {
+const CustomerManagement = () => {
   const [customerdata, setCustomerdata] = useState([]);
   const [pageno, setPageno] = useState(1);
   const [totalpages, setTotalpages] = useState(1);
@@ -23,7 +23,6 @@ const AllCustomer = () => {
     try {
       const rbody = { pageno, searchText }
       const result = await call_api.getallusers(rbody);
-      console.log(result)
       setHasMore(result.hasMore);
       setTotalpages(result.totalPages);
       setCheckChanges(false);
@@ -88,7 +87,7 @@ const AllCustomer = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-50 p-4">
+      <div className="min-h-screen bg-gray-100 p-4 rounded">
       <div className="max-w-7xl mx-auto">
         <div className='flex'>
           <div className=' mr-8 mt-2'>
@@ -260,4 +259,4 @@ const AllCustomer = () => {
   )
 }
 
-export default AllCustomer;
+export default CustomerManagement;
