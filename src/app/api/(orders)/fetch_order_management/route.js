@@ -3,7 +3,6 @@ import OrdersModel from "@/models/ordersSchema";
 import { handleError } from "@/utils/errorHandler";
 import { NextResponse } from "next/server";
 import TokenHandler from "@/utils/tokenHandler";
-import mongoose from "mongoose";
 
 export async function POST(request) {
   try {
@@ -11,26 +10,33 @@ export async function POST(request) {
     if (token !== "admin_account") {
       return handleError(null, "Please login first to get details");
     }
+
     const { pageno, searchText, statusFilter, startDate, endDate } = await request.json();
     const page = pageno ? pageno : 1;
     const limit = 20;
     const start_index = (page - 1) * limit;
+
     await dbConnect();
-    let query = {};
+    let baseQuery = {};
     if (statusFilter && statusFilter !== "all") {
-      query.order_status = statusFilter;
+      baseQuery.order_status = statusFilter;
     }
+    let dateFilter = {};
     if (startDate || endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
       end.setHours(23, 59, 59, 999);
-      query.invoice_date = { $gte: start, $lte: end };
+      dateFilter.invoice_date = { $gte: start, $lte: end };
     }
+    const ordersQuery = { ...baseQuery, ...dateFilter };
+
+    const statsBaseQuery = { ...dateFilter };
+    const statsConfirmedQuery = { ...dateFilter, order_status: "confirmed" };
 
     let pipeline = [
       {
         $addFields: {
-          customerId: { $toObjectId: "$customer" }, 
+          customerId: { $toObjectId: "$customer" },
         },
       },
       {
@@ -47,8 +53,9 @@ export async function POST(request) {
         },
       },
       { $project: { customerData: 0, customerId: 0 } },
-      { $match: query },
+      { $match: ordersQuery },
     ];
+
     if (searchText) {
       pipeline.push({
         $match: {
@@ -61,32 +68,37 @@ export async function POST(request) {
         },
       });
     }
+
     pipeline.push(
       { $sort: { invoice_date: -1 } },
       { $skip: start_index },
       { $limit: limit }
     );
-
     const [ordersData, totalCount, statsResult] = await Promise.all([
       OrdersModel.aggregate(pipeline),
-      OrdersModel.countDocuments(query),
+      OrdersModel.countDocuments(ordersQuery),
       OrdersModel.aggregate([
         {
           $facet: {
-            totalOrders: [{ $count: "count" }],
+            totalOrders: [
+              { $match: statsBaseQuery },
+              { $count: "count" }
+            ],
             confirmedOrders: [
-              { $match: { order_status: "confirmed" } },
-              { $count: "count" },
+              { $match: { ...statsBaseQuery, order_status: "confirmed" } },
+              { $count: "count" }
             ],
             cancelledOrders: [
-              { $match: { order_status: "cancelled" } },
-              { $count: "count" },
+              { $match: { ...statsBaseQuery, order_status: "cancelled" } },
+              { $count: "count" }
             ],
             totalRevenue: [
-              { $group: { _id: null, total: { $sum: "$total_incl_vat" } } },
+              { $match: statsConfirmedQuery },
+              { $group: { _id: null, total: { $sum: "$total_incl_vat" } } }
             ],
             avgOrderValue: [
-              { $group: { _id: null, avg: { $avg: "$total_incl_vat" } } },
+              { $match: statsConfirmedQuery },
+              { $group: { _id: null, avg: { $avg: "$total_incl_vat" } } }
             ],
           },
         },
@@ -110,6 +122,7 @@ export async function POST(request) {
         avgOrderValue: statsResult[0]?.avgOrderValue[0]?.avg || 0,
       },
     };
+
     return NextResponse.json(orders);
   } catch (error) {
     return handleError(error);
