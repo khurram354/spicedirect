@@ -1,7 +1,8 @@
+'use client';
 import { IoHomeOutline } from "react-icons/io5";
 import { FaBorderAll } from "react-icons/fa";
 import { AiOutlineProduct } from "react-icons/ai";
-import { FaCircleDollarToSlot, FaBorderNone } from "react-icons/fa6";
+import { FaCircleDollarToSlot, FaBorderNone, FaUsers,FaCubes, FaCube, FaNetworkWired, FaImage, FaImages, FaDiagramProject } from "react-icons/fa6";
 import { PiSquaresFourDuotone } from "react-icons/pi";
 import { AiFillProduct } from "react-icons/ai";
 export const NavBarItems = [
@@ -13,29 +14,21 @@ export const NavBarItems = [
             { 
                 id: "111",
                 name: "Order Management", 
-                link: '/admin/dashboard/order_management'
+                link: '/admin/dashboard/order_management',
+                sIcon: FaCube
             },
             { 
                 id: "112",
                 name: "Customer Management", 
-                link: '/admin/dashboard/customer_management'
-            }
-        ]
-	},
-	{
-        id: '2',
-		name: "Categories",
-		icon: <FaBorderAll />,		
-		subItems: [
-            { 
-                id: "33",
-                name: "Create SubCategory", 
-                link: '/admin/addsubcategory'
-            },{ 
-                id: "34",
-                name: "Create SubSubCate", 
-                link: '/admin/addsubsubcategory'
+                link: '/admin/dashboard/customer_management',
+                sIcon: FaUsers
             },
+            { 
+                id: "113",
+                name: "Category Management", 
+                link: '/admin/dashboard/category_management',
+                sIcon: FaCubes
+            }
         ]
 	},
 	{
@@ -45,74 +38,55 @@ export const NavBarItems = [
 		subItems: [
 			{ 
                 id: "100",
-                name: "Edit Products",
-                link: '/admin/allproduct'
+                name: "Edit Main Products",
+                link: '/admin/allproduct',
+                sIcon: FaNetworkWired
+            },{ 
+                id: "101",
+                name: "Edit Featured Categories",
+                link: '/admin/addcategories',
+                sIcon: FaDiagramProject
             },
 		]
 	},
 	{
         id: "4",
-		name: "Featured Categories",
-        icon: <AiOutlineProduct />,
+		name: "Featured Images",
+        icon: <FaImage />,
 		
 		subItems: [
 			{ 
                 id: "200",
                 name: "Update Banner", 
                 link: "/admin/editbanners",
+                sIcon: FaImages
             },
 			{ 
                 id: "201",
                 name: "Update Cuisine",
                 link: "/admin/editcuisines", 
+                sIcon: FaImages
             },
             {
                 id: '202',
                 name: 'Update Home Slider',
-                link: '/admin/edithomeslider'
+                link: '/admin/edithomeslider',
+                sIcon: FaImages
             },
             {
                 id: '203',
                 name: 'Update Supplier Logo',
-                link: '/admin/editsupplier'
+                link: '/admin/editsupplier',
+                sIcon: FaImages
             },
             {
                 id: '204',
                 name: 'Update App Category Banner',
-                link: '/admin/editappcategory'
+                link: '/admin/editappcategory',
+                sIcon: FaImages
             },
 		]
-	},{
-        id: "5",
-		name: "Blogs",
-        icon: <AiOutlineProduct />,
-		
-		subItems: [
-			{ 
-                id: "300",
-                name: "Write Blog", 
-                link: "/admin/writeblog",
-            },
-			{ 
-                id: "301",
-                name: "Update Blog",
-                link: "/admin/editblog", 
-            },
-		]
-	},{
-        id: "6",
-		name: "Terms & Conditions",
-        icon: <AiOutlineProduct />,
-		
-		subItems: [
-			{ 
-                id: "360",
-                name: "Update Terms & conditions", 
-                link: "/admin/update_terms_&_conditions",
-            },
-		]
-	}
-	
+	},	
 ];
 
 export const InfoBar = [

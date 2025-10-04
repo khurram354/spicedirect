@@ -61,16 +61,18 @@ const AdminSidebar = () => {
                                         </div>
                                     </div>
                                     {
-                                        item.subItems && item.subItems.map((itm, index) => (
+                                        item.subItems && item.subItems.map((itm, index) => {
+                                            const Icon = itm.sIcon;
+                                            return(
                                             <Link key={index} href={`${itm?.link}`}>
                                                 <div className={`ml-2 relative flex flex-row items-center h-11 focus:outline-none hover:bg-secondary text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-secondary pr-6 cursor-pointer ${itemsIds.includes(item.id) ? "block" : "hidden"}`} >
                                                     <span className="inline-flex justify-center items-center ml-4">
-                                                        < FaRegImages className='w-5 h-5' />
+                                                        <Icon className='w-5 h-5' /> 
                                                     </span>
                                                     <span className="ml-2 text-xs tracking-wide truncate">{itm?.name}</span>
                                                 </div>
-                                            </Link>
-                                        ))
+                                            </Link>)
+                                        })
                                     }
                                 </li>
                             ))

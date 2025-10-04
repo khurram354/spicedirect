@@ -4,7 +4,6 @@ import Header from "@/components/headercom/Header";
 import FindUs from "@/components/Home/FindUs";
 import Heading from "@/components/Home/Heading";
 import HomeBanner from "@/components/Home/HomeBanner";
-// import HomeBlog from "@/components/Home/HomeBlog";
 import HomeSlider from "@/components/Home/HomeSlider";
 import OurSupplier from "@/components/Home/OurSupplier";
 import ShopByCuisine from "@/components/Home/ShopByCuisine";
@@ -27,13 +26,8 @@ async function getallsupplierimages () {
   }else{return []}     
 }
 const imagesFiles = await getallsupplierimages();
-// async function getAllHomeBlogs () {
-//   const resp = await call_api.getallhomeblog();
-//   return resp;
-// }
 const banners = await getHomeBanners();
 const cuisines = await getAllCuisines();
-// const blogs = await getAllHomeBlogs();
   return (
     <>
     <Header/>
@@ -43,8 +37,6 @@ const cuisines = await getAllCuisines();
     <WhoWeServe/>
     <HomeBanner homeBanners = {banners}/>
     <ShopByCuisine cuisines = {cuisines}/>
-    {/* <Heading heading={'Shop By Sector'}/>
-    <HomeBlog blogs = {blogs}/> */}
      <Heading heading={'Product Partners'}/>
     <OurSupplier suppliers={imagesFiles}/>
     <Footer/>    

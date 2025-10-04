@@ -31,8 +31,6 @@ const getmenucategories = async () => {return await fetchData(`${frontEndURL}/ap
 const get_allsubcategories = async () => {return await fetchData(`${frontEndURL}/api/getallsubcategories`);};
 const gethomebanners = async () => {const resp = await fetchData(`${frontEndURL}/api/get_all_banners`); return resp?.banners || []}
 const getallcuisines = async () => {const resp = await fetchData(`${backEndURL}/api/get_all_cuisines`); return resp?.cuisines}
-const getallhomeblog = async () => {const resp = await fetchData(`${backEndURL}/api/get_all_blogs`); return resp?.blogs}
-const getsingleblog = async (id) => {const resp = await fetchData(`${backEndURL}/api/get_blog_byid/${id}`); return resp?.blog;}
 const logoutuser = async () => {return await fetchData(`/api/logout`);}
 const getallhomeslider = async() => {return await fetchData(`${frontEndURL}/api/get_all_homeslider_images`)}
 const get_allhomeslider = async() => {return await fetchData(`/api/get_all_homeslider_images`)}
@@ -42,11 +40,9 @@ const getall_adminsupplierimages = async() => {return await fetchData(`/api/get_
 const deletesupplierslider = async (id) => {return await fetchData(`/api/delete_supplier_slider/${id}`,'DELETE');}
 const getallterms = async() => {return await fetchData(`${frontEndURL}/api/get_terms_conditions`);}
 const getallproducts = async (rbody) => {return await fetchData(`/api/get_allproducts`,'POST', rbody)};
-const createblog = async (rbody) => {return await fetchData(`${frontEndURL}/api/create_new_blog`, 'POST', rbody);}
 const updatecuisine = async (rbody) => {return await fetchData(`/api/add_product_cuisine`, 'POST', rbody);}
 const updatespcategory = async (rbody) => {return await fetchData(`/api/add_special_categories`,'POST', rbody);}
 const sendemail = async (rbody) => {return await fetchData(`/api/send_email`, 'POST', rbody);}
-const addtofavourite = async (rbody) => {return await fetchData(`/api/add_favourite`, 'POST', rbody);}
 const uploadproductimages = async (productId,formData) => {return await fetchData(`/api/upload_product_image/${productId}`, 'POST', formData);}
 const editbannerimages = async (bannerId,formData) => {return await fetchData(`/api/edit_banners_images/${bannerId}`, 'POST', formData);}
 const signupuser = async (rbody) => {return await fetchData(`/api/sign_up`, 'POST', rbody);}
@@ -60,8 +56,6 @@ const addsubsubcategory = async (rbody) => {return await fetchData(`/api/add_sub
 const addhomeslider = async (formData) => {return await fetchData(`/api/add_home_slider`, 'POST', formData);}
 const addsupplierslider = async (formData) => {return await fetchData(`/api/add_supplier_slider`, 'POST', formData);}
 const registerpromotionemail = async (rbody) => {return await fetchData(`${frontEndURL}/api/register_promo_email`, 'POST', rbody);}
-const upsertterms = async (rbody) => {return await fetchData(`${frontEndURL}/api/upsert_terms_conditions`, 'POST', rbody);}
-const adddynamicterms = async (rbody) => {return await fetchData(`${frontEndURL}/api/add_new_dynamic_terms`, 'POST', rbody);}
 const addprosequence = async (rbody) => {return await fetchData(`/api/add_prosequence`, 'PUT', rbody);}
 const addprosubsequence = async (rbody) => {return await fetchData(`/api/add_pro_subcate_seq`, 'PUT', rbody);}
 const checkseqnumber = async (rbody) => {return await fetchData(`/api/get_existing_seq_no`, 'POST', rbody);}
@@ -78,13 +72,9 @@ const call_api = {
   getallproducts,
   gethomebanners,
   getallcuisines,
-  createblog,
-  getallhomeblog,
-  getsingleblog,
   updatecuisine,
   updatespcategory,
   sendemail,
-  addtofavourite,
   uploadproductimages,
   editbannerimages,
   signupuser,
@@ -105,8 +95,6 @@ const call_api = {
   deletesupplierslider,
   registerpromotionemail,
   getallterms,
-  upsertterms,
-  adddynamicterms,
   get_allsubcategories,
   getmenucategories,
   getall_adminsupplierimages,
@@ -124,15 +112,3 @@ const call_api = {
 };
 export default call_api;
 
-
-// App api route for ref
-// /api/get_allcategories
-// /api/get_allproducts
-// /api/get_customer_specific_products
-// /api/reset_password
-// /api/customer_login
-// /api/create_order
-// /api/customer_profile
-// /api/fetch_my_orders
-// /api/order_detail?orderid=${orderId}
-// /api/cancel_order?id=${orderId}

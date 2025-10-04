@@ -1,17 +1,17 @@
-export const dynamic = 'force-dynamic'
-import BlogTemplete from "@/components/adminlayout/createblog/BlogTemplete";
+export const dynamic = 'force-dynamic';
+import CategoryManagement from "@/components/adminlayout/dashboard/CategoryManagement";
 import { redirect } from "next/navigation";
 import TokenHandler from "@/utils/tokenHandler";
+
 const page = async() => {
-  const token = await TokenHandler();
+    const token = await TokenHandler();
   if(token !== "admin_account") {
     redirect('/admin');
     return null;
   }
   return (
-    <>
-      <BlogTemplete />
-    </>
+    <><CategoryManagement/></>
   )
 }
+
 export default page

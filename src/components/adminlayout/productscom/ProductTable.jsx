@@ -3,7 +3,6 @@ import { TbEdit } from "react-icons/tb";
 import Link from 'next/link';
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import FavouriteDialogue from "./FavouriteDialogue";
 import SubCategoryDialogue from "./SubCategoryDialogue";
 import SubSubCategoryDialogue from './SubSubCategoryDialogue';
 import Pagination from "@/components/common/Pagination";
@@ -17,7 +16,6 @@ const ProductTable = () => {
   const [totalpages, setTotalpages] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [searchText, setSearchText] = useState("");
-  const [dialogueOpen, setDialogueOpen] = useState(false);
   const [subcatedialogueopen, setSubcatedialogueopen] = useState(false);
   const [subsubcatedialogueopen, setSubsubcatedialogueopen] = useState(false);
   const [proseqdialogueopen, setProseqdialogueopen] = useState(false);
@@ -39,10 +37,6 @@ const ProductTable = () => {
     }
   }
 
-  const AddToFavHandler = (id) => {
-    setProductId(id);
-    setDialogueOpen(!dialogueOpen);
-  }
   const AddToSubCategoryHandler = (id) => {
     setSubsubcatedialogueopen(false);
     setProductId(id);
@@ -77,7 +71,7 @@ const ProductTable = () => {
   }, [pageno, checkChanges]);
 
   const pageHandler = (key) => {
-    if(typeof key === 'number') return setPageno(key);
+    if (typeof key === 'number') return setPageno(key);
     setPageno((prevPage) => {
       if (key === 'increament') {
         return prevPage + 1
@@ -123,8 +117,6 @@ const ProductTable = () => {
                   <th className="px-1 py-3 w-28 text-center">Sub Category</th>
                   <th className="px-1 py-3 w-28 text-center">Product SubCate Sequence</th>
                   <th className="px-1 py-3 w-28 text-center">Sub SubCategory</th>
-                  <th className="px-1 py-3 w-28 text-center">Status</th>
-                  <th className="px-1 py-3 w-32 text-center">Favourite Product</th>
                   <th className="px-1 py-3 w-40 text-center">Update Images</th>
                 </tr>
               </thead>
@@ -134,55 +126,44 @@ const ProductTable = () => {
                     <td className="px-1 py-3 text-sm w-28">{`SKU_${pro.barcode}`}</td>
                     <td className="px-1 py-3 text-sm w-40">{pro.name}</td>
                     <td className="px-1 py-3 text-sm w-28 text-center">{pro.category?.name}</td>
-                     <td className="px-1 py-3 text-sm w-28 relative">{pro?.cate_sequence_no??''}
-                       <div className="absolute right-20 top-10">
+                    <td className="px-1 text-sm w-28 relative flex top-10 justify-center items-center">{pro?.cate_sequence_no ?? ''}
+                      <div className="absolute right-16 top-5">
                         {
-                          proseqdialogueopen && productId === pro._id && <ProSequenceDialogue id={pro._id} procateid = {pro.category} setCheckChanges={setCheckChanges} sequenceType = {"category"} setProseqdialogueopen={setProseqdialogueopen} setProsubseqdialogueopen={setProsubseqdialogueopen}/>
+                          proseqdialogueopen && productId === pro._id && <ProSequenceDialogue id={pro._id} procateid={pro.category} setCheckChanges={setCheckChanges} sequenceType={"category"} setProseqdialogueopen={setProseqdialogueopen} setProsubseqdialogueopen={setProsubseqdialogueopen} />
                         }
                       </div>
                       <div className="">
                         <TbEdit className='w-5 h-5 text-secondary cursor-pointer' onClick={(e) => AddProductSeqHandler(pro._id)} />
                       </div>
                     </td>
-                    <td className="px-1 py-3 text-sm w-28 relative">{pro.subcategory?.name}
-                      <div className="absolute right-20 top-10">
-                        {
-                          subcatedialogueopen && productId === pro._id && <SubCategoryDialogue setSubcatedialogueopen={setSubcatedialogueopen} proId={pro._id} setCheckChanges={setCheckChanges} />
-                        }
-                      </div>
-                      <div className="">
-                        <TbEdit className='w-5 h-5 text-secondary cursor-pointer' onClick={(e) => AddToSubCategoryHandler(pro._id)} />
+                    <td className="px-1 py-3 text-sm w-28 relative">
+                      <div className="flex">
+                        <div className="absolute right-28 top-16">
+                          {
+                            subcatedialogueopen && productId === pro._id && <SubCategoryDialogue setSubcatedialogueopen={setSubcatedialogueopen} proId={pro._id} setCheckChanges={setCheckChanges} />
+                          }
+                        </div>
+                        <TbEdit className='w-5 h-5 text-secondary cursor-pointer' onClick={(e) => AddToSubCategoryHandler(pro._id)} />{pro.subcategory?.name}
                       </div>
                     </td>
-                    <td className="px-1 py-3 text-sm w-28 relative">{pro?.subcate_sequence_no??''}
-                       <div className="absolute right-20 top-10">
+                    <td className="px-1 text-sm w-28 relative flex justify-center items-center top-10">{pro?.subcate_sequence_no ?? ''}
+                      <div className="absolute right-16 top-6">
                         {
-                          prosubseqdialogueopen && productId === pro._id && <ProSequenceDialogue  id={pro._id} procateid = {pro.subcategory} setCheckChanges={setCheckChanges} sequenceType={"subcategory"} setProseqdialogueopen = {setProseqdialogueopen} setProsubseqdialogueopen={setProsubseqdialogueopen}/>
+                          prosubseqdialogueopen && productId === pro._id && <ProSequenceDialogue id={pro._id} procateid={pro.subcategory} setCheckChanges={setCheckChanges} sequenceType={"subcategory"} setProseqdialogueopen={setProseqdialogueopen} setProsubseqdialogueopen={setProsubseqdialogueopen} />
                         }
                       </div>
                       <div className="">
                         <TbEdit className='w-5 h-5 text-secondary cursor-pointer' onClick={(e) => AddProductSubSeqHandler(pro._id)} />
                       </div>
                     </td>
-                    <td className="px-1 py-3 text-sm w-28 relative">{pro.subsubcategory?.name}
-                      <div className="absolute right-20 top-10">
-                        {
-                          subsubcatedialogueopen && productId === pro._id && <SubSubCategoryDialogue setSubsubcatedialogueopen={setSubsubcatedialogueopen} proId={pro._id} setCheckChanges={setCheckChanges} />
-                        }
-                      </div>
-                      <div className="">
-                        <TbEdit className='w-5 h-5 text-secondary cursor-pointer' onClick={(e) => AddToSubSubCategoryHandler(pro._id)} />
-                      </div>
-                    </td>
-                    <td className="px-1 py-3 text-sm w-28 text-center">{pro.active ? 'Available' : 'Out Of Stock'}</td>
-                    <td className="px-1 py-3 text-sm w-32 h-20 flex justify-center items-center relative">
-                      <div className="absolute right-20 top-10">
-                        {
-                          dialogueOpen && productId === pro._id && <FavouriteDialogue setDialogueOpen={setDialogueOpen} proId={pro._id} setCheckChanges={setCheckChanges} />
-                        }
-                      </div>
-                      <div className="">
-                        <TbEdit className='w-5 h-5 text-secondary cursor-pointer' onClick={(e) => AddToFavHandler(pro._id)} />
+                    <td className="px-1 py-3 text-sm w-28 relative">
+                      <div className="flex">
+                        <div className="absolute right-28 top-14">
+                          {
+                            subsubcatedialogueopen && productId === pro._id && <SubSubCategoryDialogue setSubsubcatedialogueopen={setSubsubcatedialogueopen} proId={pro._id} setCheckChanges={setCheckChanges} />
+                          }
+                        </div>
+                        <TbEdit className='w-5 h-5 text-secondary cursor-pointer' onClick={(e) => AddToSubSubCategoryHandler(pro._id)} />{pro.subsubcategory?.name}
                       </div>
                     </td>
                     <td className="px-1 py-3 text-sm w-40 relative">
