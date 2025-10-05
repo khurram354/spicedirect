@@ -1,6 +1,5 @@
 'use client';
 import { TbEdit } from "react-icons/tb";
-import Link from 'next/link';
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import SubCategoryDialogue from "./SubCategoryDialogue";
@@ -10,7 +9,7 @@ import { FaSearch } from "react-icons/fa";
 import call_api from "@/helper/Api";
 import ProSequenceDialogue from "./ProSequenceDialogue";
 
-const ProductTable = () => {
+const FeaturedCategoryTable = () => {
   const [productdata, setProductdata] = useState([]);
   const [pageno, setPageno] = useState(1);
   const [totalpages, setTotalpages] = useState(1);
@@ -34,6 +33,21 @@ const ProductTable = () => {
     } catch (error) {
       console.log("Error fetching data", error);
       return [];
+    }
+  }
+
+  const handleFileUpload = async (e, productId) => {
+    const file = e.target.files[0];
+    if (!file) { alert("Please choose an image to upload"); return; }
+    const formData = new FormData();
+    formData.append("file", file);
+    try {
+      const result = await call_api.uploadproductimages(productId, formData);
+      if (result.success) {
+        fetchProducts();
+      } else { alert("Image not Uploaded, network error") }
+    } catch (error) {
+      console.log("error", error)
     }
   }
 
@@ -177,7 +191,12 @@ const ProductTable = () => {
                             className="object-cover w-full h-full"
                           />
                         </span>
-                        <Link href={`/admin/editproductimage/${pro._id}`}><TbEdit className='w-5 h-5 text-secondary cursor-pointer' /></Link>
+                        <input type="file"
+                          className="hidden"
+                          id={`fileupload-${index}`}
+                          onChange={(e) => handleFileUpload(e, pro._id)}
+                        />
+                        <label htmlFor={`fileupload-${index}`}><TbEdit className='w-5 h-5 text-secondary cursor-pointer' /></label>
                       </div>
                     </td>
                   </tr>
@@ -199,4 +218,4 @@ const ProductTable = () => {
   )
 }
 
-export default ProductTable
+export default FeaturedCategoryTable

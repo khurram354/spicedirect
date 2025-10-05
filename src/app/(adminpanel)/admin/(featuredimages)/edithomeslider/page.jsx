@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
 import { redirect } from "next/navigation";
 import TokenHandler from "@/utils/tokenHandler";
-import AddNewSupplier from "@/components/adminlayout/editsuppliercom/AddNewSupplier";
+import AddNewSlider from "@/components/adminlayout/featuredimages/AddNewSlider";
 
 const page = async() => {
     const token = await TokenHandler();
@@ -11,7 +11,7 @@ const page = async() => {
     }
   return (
     <>
-    <AddNewSupplier/>
+    <AddNewSlider/>
     </>
   )
 }

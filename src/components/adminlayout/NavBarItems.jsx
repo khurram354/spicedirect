@@ -38,13 +38,13 @@ export const NavBarItems = [
 		subItems: [
 			{ 
                 id: "100",
-                name: "Edit Main Products",
-                link: '/admin/allproduct',
+                name: "Add Main Products Categories",
+                link: '/admin/products/add_main_product_categories',
                 sIcon: FaNetworkWired
             },{ 
                 id: "101",
-                name: "Edit Featured Categories",
-                link: '/admin/addcategories',
+                name: "Add Product Featured Categories",
+                link: '/admin/products/add_product_featured_categories',
                 sIcon: FaDiagramProject
             },
 		]

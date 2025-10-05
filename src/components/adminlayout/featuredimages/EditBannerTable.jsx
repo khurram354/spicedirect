@@ -3,9 +3,37 @@ import { TbEdit } from "react-icons/tb";
 import Link from 'next/link';
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const EditBannerTable = ({banners, type}) => {
-    const [bannerdata, setBannerdata] = useState(banners || []); 
+const EditBannerTable = ({ banners, type }) => {
+  const router = useRouter();
+  const [bannerdata, setBannerdata] = useState(banners || []);
+
+  const bannerHandler = async (e, id, type) => {
+    const file = e.target.files[0];
+    if (!file) { alert("Please choose an image to upload"); return; }
+    const formData = new FormData();
+    formData.append("file", file);
+    if (type === 'cuisine') {
+      formData.append('type', type);
+    }
+    try {
+      const bannerId = id
+      const result = await call_api.editbannerimages(bannerId, formData);
+      if (result.success) {
+        if (type === 'cuisine') {
+          router.push('/admin/editcuisines');
+        } else {
+          router.push('/admin/editbanners');
+        }
+      } else {
+        alert("can't upload image, network error")
+      }
+
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
   return (
     <>
       <div className="max-w-7xl px-4 mx-auto mt-6 relative top-5">
@@ -24,26 +52,31 @@ const EditBannerTable = ({banners, type}) => {
                 return <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" key={index}>
                   <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                     <td className="px-1 py-3 text-sm w-28">{`${type === 'cuisine' ? 'CSN' : 'BAN'}_${index}`}</td>
-                    <td className="px-1 py-3 text-sm w-40">{ban.name}</td>        
+                    <td className="px-1 py-3 text-sm w-40">{ban.name}</td>
                     <td className="px-1 py-3 text-sm w-32 h-20 flex justify-center items-center relative">
-                        <div className="absolute right-20 top-10">
-                        </div>
-                        <Link href={'/admin/addcategories'} className="cursor-pointer">
-                        <TbEdit className='w-5 h-5 text-secondary'/>
-                      </Link>                                          
+                      <div className="absolute right-20 top-10">
+                      </div>
+                      <Link href={'/admin/products/add_product_featured_categories'} className="cursor-pointer">
+                        <TbEdit className='w-5 h-5 text-secondary' />
+                      </Link>
                     </td>
                     <td className="px-1 py-3 text-sm w-40 relative">
                       <div className="flex justify-center items-center space-x-2">
                         <span className="relative w-20 h-20 overflow-hidden">
                           <Image
-                          src={`${process.env.NEXT_PUBLIC_AWS_URL}/${ban.image_name[0]}`}
-                          width={100}
-                          height={100}
-                          alt="Loading..."
-                          className="object-cover w-full h-full"
+                            src={`${process.env.NEXT_PUBLIC_AWS_URL}/${ban.image_name[0]}`}
+                            width={100}
+                            height={100}
+                            alt="Loading..."
+                            className="object-cover w-full h-full"
+                          />
+                        </span>
+                        <input type="file"
+                          className="hidden"
+                          id={ban._id}
+                          onChange={(e) => bannerHandler(e, ban._id, type)}
                         />
-                        </span>                     
-                      <Link href={`${type === 'cuisine' ? '/admin/editcuisines' : '/admin/editbanners'}/${ban._id}`}><TbEdit className='w-5 h-5 text-secondary' /></Link>
+                        <label htmlFor={ban._id}><TbEdit className='w-5 h-5 text-secondary' /></label>
                       </div>
                     </td>
                   </tr>

@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
 import { redirect } from "next/navigation";
 import TokenHandler from "@/utils/tokenHandler";
-import EditBannerTable from "@/components/adminlayout/editbannercom/EditBannerTable";
+import EditBannerTable from "@/components/adminlayout/featuredimages/EditBannerTable";
 import call_api from "@/helper/Api";
 
 const page = async () => {

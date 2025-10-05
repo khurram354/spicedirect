@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
 import { redirect } from "next/navigation";
 import TokenHandler from "@/utils/tokenHandler";
-import EditCategoryInApp from "@/components/adminlayout/editbannercom/EditCategoryInApp";
+import EditBannerTable from "@/components/adminlayout/featuredimages/EditBannerTable";
 import call_api from "@/helper/Api";
 
 const page = async() => {
@@ -10,16 +10,14 @@ const page = async() => {
       redirect('/admin');
       return null;
     }
-  
-  async function getallcategories () {
-    const response = await call_api.getallcategories();
-    return response
+  async function getHomeBanners () {
+      const response = await call_api.gethomebanners();
+      return response; 
   }
-  const allcategories = await getallcategories();
-
+  const banners = await getHomeBanners();  
   return (
     <>
-    <EditCategoryInApp allcategories = {allcategories.categories}/>
+    <EditBannerTable banners = {banners}/>
     </>
   )
 }
