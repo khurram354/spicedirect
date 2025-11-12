@@ -20,7 +20,9 @@ const ordersSchema = new mongoose.Schema({
     total_incl_vat: { type: Number},
     profit: {type: Number},
     order_number: {type: String, trim:true},
-    order_status: {type: String, default: "confirmed"}
+    order_status: {type: String, default: "confirmed"},
+    paymentStatus: {type: String, default: "pending"},
+    paymentIntentId: {type: String}
 }, {
     collection: "orders",
     versionKey: false,
