@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "GGVU28T9GA.com.spicedirectwholesale",
+        "paths": [
+          "/reset-password*",
+          "/reset-password",
+          "/reset-password/*"
+        ]
+      }
+    ]
+  }
+}
