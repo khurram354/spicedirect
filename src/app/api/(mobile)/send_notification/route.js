@@ -26,7 +26,12 @@ export async function GET(request) {
                     ttl: 3600 * 1000,
                 },
             };
-            await admin.messaging().send(message);
+            // await admin.messaging().send(message);
+            try {
+                await admin.messaging().send(message);
+            } catch (firebaseError) {
+                console.error("Firebase send error:", firebaseError);
+            }
         }
         return handleSuccess(null, "token", "send notifications successfully");
     } catch (error) {
