@@ -22,7 +22,8 @@ const ordersSchema = new mongoose.Schema({
     order_number: {type: String, trim:true},
     order_status: {type: String, default: "confirmed"},
     paymentStatus: {type: String, default: "pending"},
-    paymentIntentId: {type: String}
+    paymentIntentId: {type: String},
+    deliveryNote: {type: String},
 }, {
     collection: "orders",
     versionKey: false,

@@ -10,6 +10,7 @@ const customerSchema = new mongoose.Schema({
     status: {type: Boolean, default: false},
     zones:{type: [mongoose.Schema.Types.ObjectId], default: []},
     fcmtoken:{type:String},
+    delivery_days:{type: [Number], default: []},
 },{
     collection: 'customers',
     versionKey:false,

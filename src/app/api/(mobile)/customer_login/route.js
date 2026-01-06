@@ -20,7 +20,8 @@ export async function POST(request) {
         const deliverydays = plainCustomer.zones.map((zone,index)=>zone!=null?index:null).filter(index=>index!=null);
         const userId = customer._id;
         const LoginToken = jwt.sign(tokenData, process.env.JWT_SECRET, { expiresIn: '30d' });
-        return handleSuccess({LoginToken, deliverydays, userId}, "token", "login successfully");
+        const delivery_days = customer.delivery_days || [];
+        return handleSuccess({LoginToken, deliverydays, userId, delivery_days}, "token", "login successfully");
     } catch (error) {
         return handleError(null, "network error");
     }

@@ -14,7 +14,8 @@ export async function GET(request) {
         const weekDays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
         const deliveryDayIndex = customer.zones.map((z,index)=>z != null ? index : null).filter(d => d != null);
         const deliveryDay = deliveryDayIndex.map((i) => weekDays[i]);
-        return handleSuccess({customer, deliveryDay}, "user", "fetched profile data");
+        const delivery_days = customer.delivery_days?.map((d)=>weekDays[d]).sort((a,b) => weekDays.indexOf(a) - weekDays.indexOf(b)) || [];
+        return handleSuccess({customer, deliveryDay, delivery_days}, "user", "fetched profile data");
     } catch (error) {
         return handleError(null, "network error");
     }
