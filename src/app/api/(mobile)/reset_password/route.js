@@ -22,7 +22,10 @@ export async function POST(request) {
         const plainCustomer = customer.toObject();
         const deliverydays = plainCustomer.zones.map((zone,index)=>zone!=null?index:null).filter(index=>index!=null);
         const userId = customer._id;
-        return handleSuccess({LoginToken, deliverydays, userId}, "token", "Password reset successfully");
+        const delivery_days = customer.delivery_days || [];
+        const customerEmail = customer.email || '';
+        const customerName = customer.customer_name || '';
+        return handleSuccess({LoginToken, deliverydays, userId, delivery_days,customerEmail, customerName}, "token", "Password reset successfully");
     } catch (jwtError) {
       if (jwtError.name === 'TokenExpiredError') {
         return handleError(null, "Reset link has expired. Please request a new one.");

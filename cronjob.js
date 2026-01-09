@@ -1,7 +1,7 @@
 const cron = require("node-cron");
 
 function startCronJobs(){
-    cron.schedule("0 14,16 * * *",async()=>{
+    cron.schedule("0 13,17 * * *",async()=>{
     // cron.schedule("*/1 * * * *",async()=>{
         try {
             await fetch(`https://www.spicedirectwholesale.co.uk/api/send_notification`)
