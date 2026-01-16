@@ -8,7 +8,7 @@ export async function GET(request) {
     try {
         await dbConnect();
         const todayDate = new Date().getDay();
-        const todayOrderCustomer = await CustomerModel.find({ [`zones.${todayDate}`]: { $ne: null }, active: true });
+        const todayOrderCustomer = await CustomerModel.find({ delivery_days: (todayDate + 1) % 7, active: true });
         const activeCustomers = todayOrderCustomer.filter(customer => customer.fcmtoken);
         for (const customer of activeCustomers) {
             const message = {
@@ -26,7 +26,6 @@ export async function GET(request) {
                     ttl: 3600 * 1000,
                 },
             };
-            // await admin.messaging().send(message);
             try {
                 await admin.messaging().send(message);
             } catch (firebaseError) {
