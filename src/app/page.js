@@ -8,6 +8,7 @@ import HomeSlider from "@/components/Home/HomeSlider";
 import OurSupplier from "@/components/Home/OurSupplier";
 import ShopByCuisine from "@/components/Home/ShopByCuisine";
 import WhoWeServe from "@/components/Home/WhoWeServe";
+import PromotionBanner from "@/components/Home/PromotionBanner";
 import call_api from "@/helper/Api";
 
 async function page() {  
@@ -32,6 +33,7 @@ const cuisines = await getAllCuisines();
     <>
     <Header/>
     <HomeSlider/>
+    <PromotionBanner/>
     <FindUs/>
     <Heading heading={'Who We Serve'}/>
     <WhoWeServe/>
