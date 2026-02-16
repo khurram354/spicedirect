@@ -19,7 +19,7 @@ export async function POST(request) {
         const plainCustomer = customer.toObject();
         const deliverydays = plainCustomer.zones.map((zone,index)=>zone!=null?index:null).filter(index=>index!=null);
         const userId = customer._id;
-        const LoginToken = jwt.sign(tokenData, process.env.JWT_SECRET, { expiresIn: '30d' });
+        const LoginToken = jwt.sign(tokenData, process.env.JWT_SECRET, { expiresIn: '1y' });
         const delivery_days = customer.delivery_days || [];
         const customerEmail = customer.email || '';
         const customerName = customer.customer_name || '';
