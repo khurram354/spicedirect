@@ -79,7 +79,11 @@ export async function POST(request) {
             }
         } else {
             if (searchText) {
-                query = { name: { $regex: searchText, $options: 'i' },active:true }
+                // query = { name: { $regex: searchText, $options: 'i' },active:true }
+                const orCondition = [{ name: { $regex: searchText, $options: 'i' } }];
+                const numericSearch = parseFloat(searchText);
+                if(!isNaN(numericSearch)){orCondition.push({barcode: numericSearch})};
+                query = {$or: orCondition, active: true};
                 const resultData = await InventoryProduct.find(query).populate('category').populate('vat');
                 const resp = await setCustomerSpecificPrices(customerId, resultData);
                 const productData = resp.slice(start_index, end_index);
