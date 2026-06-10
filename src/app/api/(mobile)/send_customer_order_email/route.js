@@ -10,5 +10,5 @@ export async function POST(request) {
        if (response.accepted.length > 0) { return handleSuccess(null, null, "Email sent successfully to:", response.accepted);
       } else { return handleError(null, 'Error sending Email');}
         return handleSuccess(null, null, "email sent successfully");
-    } catch (error) {handleError(error)}
+    } catch (error) {console.error("EMAIL API ERROR:", error); handleError(error)}
 }
